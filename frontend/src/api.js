@@ -73,4 +73,10 @@ export const api = {
       method: 'POST',
       body: JSON.stringify(payload),
     }),
+  vehiclesCatalog: () => request('/api/vehicles/catalog'),
+  importVehicles: (payload = {}) =>
+    request('/api/vehicles/import', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
 }

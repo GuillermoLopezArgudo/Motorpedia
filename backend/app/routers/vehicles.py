@@ -21,7 +21,10 @@ from app.schemas import (
     TechSheetOut,
     TechSheetUpdate,
     VehiclePathOut,
+    VehicleTreeImportIn,
+    VehicleTreeImportOut,
 )
+from app.vehicle_import import import_vehicle_tree, load_vehicles_catalog
 
 router = APIRouter(prefix="/api", tags=["vehicles"])
 
@@ -38,6 +41,36 @@ def brand_catalog(db: Session = Depends(get_db)):
         CatalogBrandOut(name=name, imported=name.casefold() in existing)
         for name in load_brand_catalog()
     ]
+
+
+@router.get("/vehicles/catalog")
+def vehicles_catalog_preview():
+    data = load_vehicles_catalog()
+    return {
+        "brands": len(data),
+        "models": sum(len(b.get("models") or []) for b in data),
+        "entries": [
+            {
+                "brand": b["brand"],
+                "models": len(b.get("models") or []),
+            }
+            for b in data
+        ],
+    }
+
+
+@router.post("/vehicles/import", response_model=VehicleTreeImportOut)
+def vehicles_import(payload: VehicleTreeImportIn, db: Session = Depends(get_db)):
+    """Importa marca → modelo → años. No crea motores ni piezas (eso es contenido de taller)."""
+    if payload.year_from and payload.year_to and payload.year_from > payload.year_to:
+        raise HTTPException(400, "year_from no puede ser mayor que year_to")
+    result = import_vehicle_tree(
+        db,
+        brand_names=payload.brands,
+        year_from=payload.year_from,
+        year_to=payload.year_to,
+    )
+    return VehicleTreeImportOut(**result)
 
 
 @router.post("/brands/import", response_model=BrandImportOut)

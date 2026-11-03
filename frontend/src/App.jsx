@@ -41,15 +41,36 @@ export default function App() {
   const [notice, setNotice] = useState('')
   const [loading, setLoading] = useState(false)
   const [saving, setSaving] = useState(false)
+  const [importingTree, setImportingTree] = useState(false)
+  const [treePreview, setTreePreview] = useState(null)
 
   const refreshBrands = () => api.brands().then(setBrands)
   const refreshCatalog = () => api.brandCatalog().then(setCatalog)
 
   useEffect(() => {
-    Promise.all([refreshBrands(), refreshCatalog()]).catch((e) =>
-      setError(e.message || 'No se pudo cargar marcas'),
-    )
+    Promise.all([
+      refreshBrands(),
+      refreshCatalog(),
+      api.vehiclesCatalog().then(setTreePreview),
+    ]).catch((e) => setError(e.message || 'No se pudo cargar marcas'))
   }, [])
+
+  async function handleImportVehicleTree() {
+    setImportingTree(true)
+    setError('')
+    setNotice('')
+    try {
+      const result = await api.importVehicles({})
+      await refreshBrands()
+      setNotice(
+        `Árbol importado: +${result.brands_created} marcas, +${result.models_created} modelos, +${result.years_created} años. ${result.note}`,
+      )
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setImportingTree(false)
+    }
+  }
 
   useEffect(() => {
     setModels([])
@@ -484,6 +505,22 @@ export default function App() {
             ))}
           </form>
         )}
+      </section>
+
+      <section className="panel catalog">
+        <div className="sheet-head">
+          <div>
+            <h2>Árbol de vehículos (UE)</h2>
+            <p className="muted">
+              Importa marca → modelo → años (~{treePreview?.brands ?? '…'} marcas, ~
+              {treePreview?.models ?? '…'} modelos). No incluye motores ni piezas: eso es el
+              contenido de taller y se completa aparte (no hay fuente gratis con “todo”).
+            </p>
+          </div>
+          <button type="button" onClick={handleImportVehicleTree} disabled={importingTree}>
+            {importingTree ? 'Importando…' : 'Importar árbol completo'}
+          </button>
+        </div>
       </section>
 
       <section className="panel catalog">

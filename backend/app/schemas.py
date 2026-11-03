@@ -194,3 +194,17 @@ class WorkshopItemUpdate(BaseModel):
     interval_months: int | None = None
     notes: str | None = None
     is_recommended: bool | None = None
+
+
+class VehicleTreeImportIn(BaseModel):
+    brands: list[str] | None = None
+    year_from: int | None = Field(default=None, ge=1950, le=2100)
+    year_to: int | None = Field(default=None, ge=1950, le=2100)
+
+
+class VehicleTreeImportOut(BaseModel):
+    brands_touched: list[str]
+    brands_created: int
+    models_created: int
+    years_created: int
+    note: str
