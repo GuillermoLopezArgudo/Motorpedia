@@ -294,6 +294,20 @@ export default function App() {
                   {vehicle.engine.torque_nm ? ` · ${vehicle.engine.torque_nm} Nm` : ''}
                   {vehicle.engine.engine_code ? ` · ${vehicle.engine.engine_code}` : ''}
                 </p>
+                <p className="quality-line">
+                  {vehicle.data_quality === 'verificado' && (
+                    <span className="badge badge-ok">Ficha verificada</span>
+                  )}
+                  {vehicle.data_quality === 'parcial' && (
+                    <span className="badge badge-mid">Parcialmente verificada</span>
+                  )}
+                  {vehicle.data_quality === 'orientativo' && (
+                    <span className="badge badge-warn">Datos orientativos</span>
+                  )}
+                  <span className="muted small">
+                    {vehicle.verified_items || 0}/{vehicle.total_items || 0} ítems verificados
+                  </span>
+                </p>
               </div>
             </div>
 

@@ -243,12 +243,34 @@ def get_vehicle(engine_id: int, db: Session = Depends(get_db)):
     year = engine.model_year
     model = year.model
     brand = model.brand
+
+    from app.models import WorkshopItem
+
+    total_items = (
+        db.query(WorkshopItem).filter(WorkshopItem.engine_id == engine_id).count()
+    )
+    verified_items = (
+        db.query(WorkshopItem)
+        .filter(WorkshopItem.engine_id == engine_id, WorkshopItem.is_verified.is_(True))
+        .count()
+    )
+    sheet_verified = bool(engine.sheet and engine.sheet.is_verified)
+    if sheet_verified and total_items > 0 and verified_items == total_items:
+        quality = "verificado"
+    elif sheet_verified or verified_items > 0:
+        quality = "parcial"
+    else:
+        quality = "orientativo"
+
     return VehiclePathOut(
         brand=brand,
         model=model,
         year=year,
         engine=engine,
         sheet=engine.sheet,
+        data_quality=quality,
+        verified_items=verified_items,
+        total_items=total_items,
     )
 
 

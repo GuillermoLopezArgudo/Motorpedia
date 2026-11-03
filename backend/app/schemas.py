@@ -106,6 +106,7 @@ class TechSheetOut(BaseModel):
     acceleration_0_100: float | None = None
     top_speed_kmh: int | None = None
     notes: str | None = None
+    is_verified: bool = False
 
 
 class TechSheetUpdate(BaseModel):
@@ -126,6 +127,7 @@ class TechSheetUpdate(BaseModel):
     acceleration_0_100: float | None = None
     top_speed_kmh: int | None = None
     notes: str | None = None
+    is_verified: bool | None = None
 
 
 class VehiclePathOut(BaseModel):
@@ -134,6 +136,9 @@ class VehiclePathOut(BaseModel):
     year: ModelYearOut
     engine: EngineOut
     sheet: TechSheetOut | None = None
+    data_quality: str = "orientativo"
+    verified_items: int = 0
+    total_items: int = 0
 
 
 class CategoryOut(BaseModel):
@@ -170,6 +175,7 @@ class WorkshopItemOut(BaseModel):
     interval_months: int | None = None
     notes: str | None = None
     is_recommended: bool = True
+    is_verified: bool = False
 
 
 class WorkshopItemCreate(BaseModel):
@@ -182,6 +188,7 @@ class WorkshopItemCreate(BaseModel):
     interval_months: int | None = None
     notes: str | None = None
     is_recommended: bool = True
+    is_verified: bool = False
 
 
 class WorkshopItemUpdate(BaseModel):
@@ -194,6 +201,7 @@ class WorkshopItemUpdate(BaseModel):
     interval_months: int | None = None
     notes: str | None = None
     is_recommended: bool | None = None
+    is_verified: bool | None = None
 
 
 class VehicleTreeImportIn(BaseModel):

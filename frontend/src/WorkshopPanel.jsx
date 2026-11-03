@@ -6,7 +6,14 @@ function ItemCard({ item }) {
     <li className="item-card">
       <div className="item-top">
         <h4>{item.title}</h4>
-        {item.is_recommended && <span className="badge">Recomendado</span>}
+        <div className="badge-row">
+          {item.is_verified ? (
+            <span className="badge badge-ok">Verificado</span>
+          ) : (
+            <span className="badge badge-warn">Orientativo</span>
+          )}
+          {item.is_recommended && <span className="badge">Recomendado</span>}
+        </div>
       </div>
       <dl className="item-meta">
         {item.oem_ref && (

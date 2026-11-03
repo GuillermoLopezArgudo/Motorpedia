@@ -1,0 +1,497 @@
+[
+  {
+    "brand": "Seat",
+    "model": "Ibiza",
+    "year_from": 1999,
+    "year_to": 2002,
+    "engine_match": "1.9 TDI",
+    "power_hp": 90,
+    "sheet": {
+      "summary": "Seat Ibiza II/III 1.9 TDI 90 CV — ficha verificada Motorpedia (taller).",
+      "body_type": "Hatchback",
+      "doors": 5,
+      "seats": 5,
+      "transmission": "Manual 5 velocidades",
+      "drive": "Delantera",
+      "length_mm": 3877,
+      "width_mm": 1640,
+      "height_mm": 1415,
+      "wheelbase_mm": 2443,
+      "weight_kg": 1125,
+      "fuel_tank_l": 45,
+      "consumption_l_100km": 5.0,
+      "co2_g_km": 135,
+      "acceleration_0_100": 12.5,
+      "top_speed_kmh": 180,
+      "notes": "Verificar siempre con VIN. Referencias OEM del grupo VW de la época."
+    },
+    "items": [
+      {
+        "category": "aceites",
+        "title": "Aceite de motor",
+        "oem_ref": "VW 505.01 / 505.00",
+        "quantity": "≈ 4,3 L",
+        "interval_km": 15000,
+        "interval_months": 12,
+        "notes": "Viscosidad habitual 5W-40 diésel según especificación VW. Confirmar en tapón."
+      },
+      {
+        "category": "aceites",
+        "title": "Líquido de frenos",
+        "oem_ref": "DOT 4",
+        "quantity": "Según sangrado",
+        "interval_months": 24
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de aceite",
+        "oem_ref": "06A115561B",
+        "quantity": "1",
+        "notes": "Con cada cambio de aceite."
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de aire",
+        "oem_ref": "6K0129620",
+        "quantity": "1",
+        "interval_km": 30000
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de combustible",
+        "oem_ref": "1J0127401A",
+        "quantity": "1",
+        "interval_km": 60000
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de habitáculo",
+        "quantity": "1",
+        "interval_km": 30000,
+        "interval_months": 24
+      },
+      {
+        "category": "correas",
+        "title": "Correa de distribución",
+        "oem_ref": "06A109119C",
+        "alt_ref": "Gates 5419XS (equiv. orientativa)",
+        "position": "Distribución",
+        "quantity": "1",
+        "interval_km": 90000,
+        "interval_months": 60,
+        "notes": "Kit completo: correa + tensores + bomba de agua recomendada."
+      },
+      {
+        "category": "correas",
+        "title": "Correa auxiliar / accesorios",
+        "oem_ref": "06A903137E",
+        "position": "Alternador / dirección / A/C",
+        "quantity": "1",
+        "interval_km": 60000,
+        "interval_months": 48
+      },
+      {
+        "category": "ruedas",
+        "title": "Medida de neumático habitual",
+        "notes": "185/60 R14 o 185/55 R15 según llanta. Presión en tapa de combustible.",
+        "quantity": "4"
+      },
+      {
+        "category": "ruedas",
+        "title": "Par de apriete de rueda",
+        "notes": "≈ 120 Nm (confirmar en manual del vehículo)."
+      },
+      {
+        "category": "frenos",
+        "title": "Pastillas delanteras",
+        "position": "Eje delantero",
+        "quantity": "1 juego",
+        "notes": "Referencia según disco/llanta; verificar al desmontar."
+      },
+      {
+        "category": "bujias",
+        "title": "Calentadores",
+        "notes": "Fallos de arranque en frío / humo blanco: comprobar resistencia y control."
+      },
+      {
+        "category": "fallos",
+        "title": "Caudalímetro (MAF) sucio o fallando",
+        "notes": "Tirones, humo, falta de potencia. Muy frecuente en TDI de la época."
+      },
+      {
+        "category": "fallos",
+        "title": "Inyectores / junta de inyector",
+        "notes": "Holgura, ruidos metálicos o pérdida. Revisar pares de apriete."
+      }
+    ]
+  },
+  {
+    "brand": "Seat",
+    "model": "León",
+    "year_from": 2017,
+    "year_to": 2020,
+    "engine_match": "1.5 TSI",
+    "power_hp": 150,
+    "sheet": {
+      "summary": "Seat León 1.5 TSI 150 CV — ficha verificada Motorpedia.",
+      "body_type": "Hatchback",
+      "doors": 5,
+      "seats": 5,
+      "transmission": "Manual 6 / DSG",
+      "drive": "Delantera",
+      "length_mm": 4368,
+      "width_mm": 1816,
+      "height_mm": 1459,
+      "wheelbase_mm": 2636,
+      "weight_kg": 1280,
+      "fuel_tank_l": 50,
+      "consumption_l_100km": 5.2,
+      "co2_g_km": 118,
+      "acceleration_0_100": 8.3,
+      "top_speed_kmh": 215,
+      "notes": "Motor EA211 evo (códigos tipo DADA). Confirmar con VIN."
+    },
+    "items": [
+      {
+        "category": "aceites",
+        "title": "Aceite de motor",
+        "oem_ref": "VW 508.00 / 504.00",
+        "quantity": "≈ 4,3 L",
+        "interval_km": 15000,
+        "interval_months": 12,
+        "notes": "0W-20 típico en esta homologación. Verificar tapón."
+      },
+      {
+        "category": "aceites",
+        "title": "Líquido de frenos",
+        "oem_ref": "DOT 4",
+        "interval_months": 24
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de aceite",
+        "quantity": "1",
+        "notes": "Con cada servicio de aceite. OEM según VIN."
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de aire",
+        "quantity": "1",
+        "interval_km": 30000
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de habitáculo",
+        "quantity": "1",
+        "interval_km": 30000,
+        "interval_months": 24
+      },
+      {
+        "category": "correas",
+        "title": "Distribución",
+        "notes": "Cadena de distribución en este motor. Revisar ruidos / tensores; no es correa periódica clásica."
+      },
+      {
+        "category": "correas",
+        "title": "Correa auxiliar",
+        "interval_km": 60000,
+        "interval_months": 48
+      },
+      {
+        "category": "ruedas",
+        "title": "Medida de neumático habitual",
+        "notes": "205/55 R16 o 225/45 R17 según acabado."
+      },
+      {
+        "category": "frenos",
+        "title": "Pastillas / discos",
+        "notes": "Medir desgaste; referencia según eje y llanta."
+      },
+      {
+        "category": "bujias",
+        "title": "Bujías de encendido",
+        "interval_km": 60000,
+        "notes": "Tipo iridio habitual. Par de apriete crítico."
+      },
+      {
+        "category": "fallos",
+        "title": "Sistema ACT / consumo de aceite",
+        "notes": "Vigilar nivel entre cambios; revisar TSBs del grupo VW para el código concreto."
+      }
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "year_from": 2013,
+    "year_to": 2017,
+    "engine_match": "2.0 TDI",
+    "power_hp": 150,
+    "sheet": {
+      "summary": "Volkswagen Golf VII 2.0 TDI 150 CV — ficha verificada Motorpedia.",
+      "body_type": "Hatchback",
+      "doors": 5,
+      "seats": 5,
+      "transmission": "Manual 6 / DSG",
+      "drive": "Delantera",
+      "length_mm": 4255,
+      "width_mm": 1799,
+      "height_mm": 1452,
+      "wheelbase_mm": 2637,
+      "weight_kg": 1395,
+      "fuel_tank_l": 50,
+      "consumption_l_100km": 4.2,
+      "co2_g_km": 109,
+      "acceleration_0_100": 8.6,
+      "top_speed_kmh": 216,
+      "notes": "EA288. Confirmar AdBlue / FAP según mercado y VIN."
+    },
+    "items": [
+      {
+        "category": "aceites",
+        "title": "Aceite de motor",
+        "oem_ref": "VW 507.00",
+        "quantity": "≈ 4,7 L",
+        "interval_km": 15000,
+        "interval_months": 12,
+        "notes": "Low SAPS. Viscosidad habitual 5W-30."
+      },
+      {
+        "category": "aceites",
+        "title": "Líquido de frenos",
+        "oem_ref": "DOT 4",
+        "interval_months": 24
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de aceite",
+        "quantity": "1"
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de aire",
+        "quantity": "1",
+        "interval_km": 30000
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de combustible",
+        "quantity": "1",
+        "interval_km": 60000
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de habitáculo",
+        "quantity": "1",
+        "interval_km": 30000
+      },
+      {
+        "category": "correas",
+        "title": "Distribución (correa)",
+        "interval_km": 210000,
+        "interval_months": 120,
+        "notes": "Intervalo largo en EA288; confirmar kit + bomba de agua según código motor."
+      },
+      {
+        "category": "correas",
+        "title": "Correa auxiliar",
+        "interval_km": 60000,
+        "interval_months": 48
+      },
+      {
+        "category": "ruedas",
+        "title": "Medida de neumático habitual",
+        "notes": "205/55 R16 o 225/45 R17."
+      },
+      {
+        "category": "frenos",
+        "title": "Pastillas / discos",
+        "notes": "Medir desgaste; referencia según eje."
+      },
+      {
+        "category": "bujias",
+        "title": "Calentadores",
+        "notes": "Arranque en frío / humo: comprobar circuito de precalentamiento."
+      },
+      {
+        "category": "fallos",
+        "title": "FAP / EGR",
+        "notes": "Regeneraciones fallidas, tirones en ciudad. Diagnóstico OBD + calidad de combustible."
+      }
+    ]
+  },
+  {
+    "brand": "Alpine",
+    "model": "A110",
+    "year_from": 2017,
+    "year_to": 2024,
+    "engine_match": "1.8 TCe",
+    "power_hp": 252,
+    "sheet": {
+      "summary": "Alpine A110 1.8 TCe 252 CV — ficha verificada Motorpedia.",
+      "body_type": "Coupé",
+      "doors": 2,
+      "seats": 2,
+      "transmission": "DCT 7 velocidades",
+      "drive": "Trasera",
+      "length_mm": 4178,
+      "width_mm": 1798,
+      "height_mm": 1252,
+      "wheelbase_mm": 2420,
+      "weight_kg": 1103,
+      "fuel_tank_l": 45,
+      "consumption_l_100km": 6.2,
+      "co2_g_km": 141,
+      "acceleration_0_100": 4.5,
+      "top_speed_kmh": 250,
+      "notes": "Motor Renault-Nissan 1.8 turbo. Confirmar variante (Pure/S/Légende) con VIN."
+    },
+    "items": [
+      {
+        "category": "aceites",
+        "title": "Aceite de motor",
+        "oem_ref": "Renault RN17 / norma del tapón",
+        "quantity": "Consultar capacidad exacta",
+        "interval_km": 15000,
+        "interval_months": 12
+      },
+      {
+        "category": "aceites",
+        "title": "Líquido de frenos",
+        "oem_ref": "DOT 4",
+        "interval_months": 24
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de aceite",
+        "quantity": "1"
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de aire",
+        "quantity": "1",
+        "interval_km": 30000
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de habitáculo",
+        "quantity": "1",
+        "interval_km": 30000
+      },
+      {
+        "category": "correas",
+        "title": "Distribución",
+        "notes": "Cadena. Revisar ruidos; no intervalo de correa clásico."
+      },
+      {
+        "category": "ruedas",
+        "title": "Medida de neumático",
+        "notes": "Delante 205/40 R18 · Detrás 235/40 R18 (típico). Presión en manual."
+      },
+      {
+        "category": "frenos",
+        "title": "Pastillas / discos",
+        "notes": "Uso track: acortar intervalo de revisión."
+      },
+      {
+        "category": "bujias",
+        "title": "Bujías de encendido",
+        "interval_km": 60000
+      },
+      {
+        "category": "fallos",
+        "title": "Embrague DCT / software",
+        "notes": "Tirones a baja velocidad: actualizaciones de centralita y nivel de aceite de caja."
+      }
+    ]
+  },
+  {
+    "brand": "Abarth",
+    "model": "500 / 595 / 695",
+    "year_from": 2016,
+    "year_to": 2024,
+    "engine_match": "1.4 T-Jet",
+    "power_hp": 165,
+    "sheet": {
+      "summary": "Abarth 595 1.4 T-Jet 165 CV — ficha verificada Motorpedia.",
+      "body_type": "Hatchback",
+      "doors": 3,
+      "seats": 4,
+      "transmission": "Manual 5 / MTA",
+      "drive": "Delantera",
+      "length_mm": 3660,
+      "width_mm": 1627,
+      "height_mm": 1485,
+      "wheelbase_mm": 2300,
+      "weight_kg": 1045,
+      "fuel_tank_l": 35,
+      "consumption_l_100km": 6.7,
+      "co2_g_km": 155,
+      "acceleration_0_100": 7.3,
+      "top_speed_kmh": 218,
+      "notes": "Confirmar potencia exacta (140/160/165/180) y mapa ECU con VIN."
+    },
+    "items": [
+      {
+        "category": "aceites",
+        "title": "Aceite de motor",
+        "oem_ref": "Fiat 9.55535-GS1 / Selenia",
+        "quantity": "≈ 3,2–3,5 L",
+        "interval_km": 15000,
+        "interval_months": 12,
+        "notes": "5W-40 típico en T-Jet. Verificar tapón."
+      },
+      {
+        "category": "aceites",
+        "title": "Líquido de frenos",
+        "oem_ref": "DOT 4",
+        "interval_months": 24
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de aceite",
+        "quantity": "1"
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de aire",
+        "quantity": "1",
+        "interval_km": 30000
+      },
+      {
+        "category": "filtros",
+        "title": "Filtro de habitáculo",
+        "quantity": "1",
+        "interval_km": 30000
+      },
+      {
+        "category": "correas",
+        "title": "Distribución (correa)",
+        "interval_km": 120000,
+        "interval_months": 60,
+        "notes": "Kit + bomba de agua recomendada. Confirmar intervalo exacto."
+      },
+      {
+        "category": "ruedas",
+        "title": "Medida de neumático habitual",
+        "notes": "195/45 R16 o 205/40 R17 según acabado."
+      },
+      {
+        "category": "frenos",
+        "title": "Pastillas / discos",
+        "notes": "Uso deportivo: revisar antes."
+      },
+      {
+        "category": "bujias",
+        "title": "Bujías de encendido",
+        "interval_km": 30000,
+        "notes": "Intervalo corto en turbo gasolina."
+      },
+      {
+        "category": "fallos",
+        "title": "Wastegate / turbo",
+        "notes": "Pérdida de presión, ruido metálico: revisar actuador y holguras."
+      }
+    ]
+  }
+]

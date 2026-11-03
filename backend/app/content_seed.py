@@ -39,9 +39,10 @@ def _sheet_for_engine(engine: Engine) -> TechSheet:
         engine_id=engine.id,
         summary=summary,
         notes=(
-            "Datos iniciales generados automáticamente a partir del motor. "
-            "Completar carrocería, consumos y medidas; verificar siempre con VIN/OEM."
+            "Datos orientativos generados automáticamente. "
+            "No sustituyen ficha verificada ni manual OEM. Confirmar siempre con VIN."
         ),
+        is_verified=False,
     )
 
 
@@ -56,6 +57,7 @@ def _items_for_engine(engine: Engine, categories: dict) -> list[WorkshopItem]:
                 engine_id=eid,
                 category_id=categories[slug].id,
                 is_recommended=True,
+                is_verified=False,
                 **kwargs,
             )
         )

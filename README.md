@@ -1,12 +1,12 @@
 # Motorpedia
 
-Fichas técnicas e información de vehículos por **marca → modelo → año → motor**.
+**Autodata libre** de consulta: marca → modelo → año → motor → ficha completa (aceites, filtros, correas, ruedas, frenos, bujías, fallos).
 
 Stack: **React (Vite)** + **FastAPI** + **PostgreSQL**.
 
 ## Ramas
 
-- `developer` — trabajo diario (local)
+- `developer` — trabajo diario
 - `main` — lista para desplegar
 
 ## Arranque local
@@ -28,8 +28,11 @@ copy .env.example .env
 uvicorn app.main:app --reload --port 8000
 ```
 
-API: http://127.0.0.1:8000  
-Docs: http://127.0.0.1:8000/docs
+Al arrancar, la API importa el catálogo UE, rellena plantillas y aplica fichas **verificadas** propias.
+
+- API: http://127.0.0.1:8000  
+- Docs: http://127.0.0.1:8000/docs  
+- Estado: http://127.0.0.1:8000/api/status  
 
 ### 3. Frontend (React)
 
@@ -41,14 +44,23 @@ npm run dev
 
 Web: http://127.0.0.1:5173
 
-## MVP actual
+## Qué hace (MVP consulta)
 
-- Cascada marca → modelo → año → motor y ficha técnica (dimensiones, consumo, prestaciones…).
-- Crear/editar ficha y datos de motor desde la UI.
-- Añadir modelo / año / motor sobre la marca seleccionada.
-- Catálogo de marcas (`backend/data/brands_catalog.json`): importar nombres reales sin inventar modelos.
+1. Elige **marca → modelo → año → motor**
+2. Ves **toda** la ficha: técnica + taller
+3. Etiquetas de calidad:
+   - **Verificado** — curado en `backend/data/verified_workshop.json`
+   - **Orientativo** — plantilla automática (no OEM de pago)
 
-Seed demo: Seat / Volkswagen con unas pocas fichas de ejemplo.
+## Datos
+
+| Archivo | Uso |
+|---|---|
+| `backend/data/vehicles_eu.json` | Marcas / modelos / años |
+| `backend/data/engines_eu.json` | Motores conocidos |
+| `backend/data/verified_workshop.json` | Fichas de taller verificadas (tú las amplías) |
+
+Sin scrapear Autodata/TecDoc: contenido propio, legal y gratuito.
 
 ## Autor
 

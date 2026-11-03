@@ -23,6 +23,10 @@ def ensure_columns(engine: Engine) -> None:
             "co2_g_km": "INTEGER",
             "acceleration_0_100": "DOUBLE PRECISION",
             "top_speed_kmh": "INTEGER",
+            "is_verified": "BOOLEAN DEFAULT FALSE",
+        },
+        "workshop_items": {
+            "is_verified": "BOOLEAN DEFAULT FALSE",
         },
     }
 

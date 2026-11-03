@@ -427,6 +427,35 @@ button {
   white-space: nowrap;
 }
 
+.badge-ok {
+  background: var(--ok);
+  color: #0f1419;
+}
+
+.badge-mid {
+  background: #e6c35c;
+  color: #1a1508;
+}
+
+.badge-warn {
+  background: #3a4554;
+  color: #c5d0dc;
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.quality-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0.55rem 0 0;
+}
+
 .item-meta {
   display: grid;
   grid-template-columns: 6.5rem 1fr;

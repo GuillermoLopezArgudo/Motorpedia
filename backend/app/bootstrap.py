@@ -56,13 +56,26 @@ def bootstrap_catalog(db: Session) -> dict:
     if engines_without_sheet > 0 or item_count == 0:
         content = seed_baseline_content(db)
 
+    from app.verified_seed import apply_verified_content
+
+    verified = apply_verified_content(db)
+    verified_sheets = (
+        db.query(func.count(TechSheet.id)).filter(TechSheet.is_verified.is_(True)).scalar()
+        or 0
+    )
+
     return {
         "ready": True,
         "brands": db.query(func.count(Brand.id)).scalar() or 0,
         "engines": db.query(func.count(Engine.id)).scalar() or 0,
         "sheets": db.query(func.count(TechSheet.id)).scalar() or 0,
         "items": db.query(func.count(WorkshopItem.id)).scalar() or 0,
+        "verified_sheets": verified_sheets,
         "imported": imported,
         "content": content,
-        "message": "Catálogo listo. Elige marca → modelo → año → motor para ver toda la info.",
+        "verified": verified,
+        "message": (
+            "Catálogo listo. Elige marca → modelo → año → motor. "
+            "Las fichas marcadas como verificadas son curadas; el resto es orientativo."
+        ),
     }
