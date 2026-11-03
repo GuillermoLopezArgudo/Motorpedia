@@ -90,6 +90,7 @@ def import_vehicle_tree(
                 existing_years[year] = row
 
     engines_created = _import_engines(db, wanted=wanted, year_from=year_from, year_to=year_to)
+    engines_created += _ensure_placeholder_engines(db, wanted=wanted)
 
     db.commit()
     return {
@@ -103,6 +104,41 @@ def import_vehicle_tree(
             "Ficha técnica y piezas de taller se completan aparte."
         ),
     }
+
+
+def _ensure_placeholder_engines(db: Session, *, wanted: set[str] | None) -> int:
+    """Garantiza al menos un motor por año para que la cascada nunca se quede vacía."""
+    from sqlalchemy import exists
+
+    created = 0
+    years_q = (
+        db.query(ModelYear)
+        .join(CarModel)
+        .join(Brand)
+        .filter(~exists().where(Engine.model_year_id == ModelYear.id))
+    )
+    years = years_q.all()
+    if wanted is not None:
+        years = [y for y in years if y.model.brand.name.casefold() in wanted]
+
+    for model_year in years:
+        db.add(
+            Engine(
+                model_year_id=model_year.id,
+                name="Motor (catálogo pendiente)",
+                fuel="Gasolina",
+                power_hp=None,
+                displacement_cc=None,
+                engine_code=None,
+            )
+        )
+        created += 1
+        if created % 500 == 0:
+            db.flush()
+
+    if created:
+        db.flush()
+    return created
 
 
 def _engine_label(eng: dict) -> str:

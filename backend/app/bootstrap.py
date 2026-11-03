@@ -6,7 +6,9 @@ from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from app.content_seed import seed_baseline_content
-from app.models import Brand, Engine, TechSheet, WorkshopItem
+from sqlalchemy import exists
+
+from app.models import Brand, CarModel, Engine, ModelYear, TechSheet, WorkshopItem
 from app.seed import seed_categories
 from app.vehicle_import import import_vehicle_tree, load_vehicles_catalog
 
@@ -16,9 +18,16 @@ def bootstrap_catalog(db: Session) -> dict:
 
     catalog = load_vehicles_catalog()
     brand_count = db.query(func.count(Brand.id)).scalar() or 0
+    model_count = db.query(func.count(CarModel.id)).scalar() or 0
     engine_count = db.query(func.count(Engine.id)).scalar() or 0
-    sheet_count = db.query(func.count(TechSheet.id)).scalar() or 0
     item_count = db.query(func.count(WorkshopItem.id)).scalar() or 0
+    catalog_models = sum(len(entry.get("models") or []) for entry in catalog)
+    years_without_engine = (
+        db.query(func.count(ModelYear.id))
+        .filter(~exists().where(Engine.model_year_id == ModelYear.id))
+        .scalar()
+        or 0
+    )
 
     imported = {
         "brands_created": 0,
@@ -26,8 +35,13 @@ def bootstrap_catalog(db: Session) -> dict:
         "years_created": 0,
         "engines_created": 0,
     }
-    # Si faltan marcas del catálogo UE o no hay motores, importar árbol
-    if brand_count < len(catalog) or engine_count < 50:
+    # Si faltan marcas/modelos/motores del catálogo UE, importar árbol
+    if (
+        brand_count < len(catalog)
+        or model_count < catalog_models
+        or engine_count < 50
+        or years_without_engine > 0
+    ):
         imported = import_vehicle_tree(db)
 
     content = {"sheets_created": 0, "items_created": 0}

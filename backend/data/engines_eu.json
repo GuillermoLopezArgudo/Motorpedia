@@ -1594,5 +1594,275 @@
         "year_to": 2024
       }
     ]
+  },
+  {
+    "brand": "Abarth",
+    "model": "500 / 595 / 695",
+    "engines": [
+      {
+        "name": "1.4 T-Jet",
+        "fuel": "Gasolina",
+        "power_hp": 140,
+        "displacement_cc": 1368,
+        "engine_code": null,
+        "year_from": 2008,
+        "year_to": 2015
+      },
+      {
+        "name": "1.4 T-Jet",
+        "fuel": "Gasolina",
+        "power_hp": 160,
+        "displacement_cc": 1368,
+        "engine_code": null,
+        "year_from": 2010,
+        "year_to": 2016
+      },
+      {
+        "name": "1.4 T-Jet",
+        "fuel": "Gasolina",
+        "power_hp": 165,
+        "displacement_cc": 1368,
+        "engine_code": null,
+        "year_from": 2016,
+        "year_to": 2024
+      },
+      {
+        "name": "1.4 T-Jet",
+        "fuel": "Gasolina",
+        "power_hp": 180,
+        "displacement_cc": 1368,
+        "engine_code": null,
+        "year_from": 2015,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Abarth",
+    "model": "124 Spider",
+    "engines": [
+      {
+        "name": "1.4 MultiAir Turbo",
+        "fuel": "Gasolina",
+        "power_hp": 170,
+        "displacement_cc": 1368,
+        "engine_code": null,
+        "year_from": 2016,
+        "year_to": 2020
+      }
+    ]
+  },
+  {
+    "brand": "Alpine",
+    "model": "A110",
+    "engines": [
+      {
+        "name": "1.8 TCe",
+        "fuel": "Gasolina",
+        "power_hp": 252,
+        "displacement_cc": 1798,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2024
+      },
+      {
+        "name": "1.8 TCe",
+        "fuel": "Gasolina",
+        "power_hp": 300,
+        "displacement_cc": 1798,
+        "engine_code": null,
+        "year_from": 2021,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Alfa Romeo",
+    "model": "Giulia",
+    "engines": [
+      {
+        "name": "2.0 Turbo",
+        "fuel": "Gasolina",
+        "power_hp": 200,
+        "displacement_cc": 1995,
+        "engine_code": null,
+        "year_from": 2016,
+        "year_to": 2024
+      },
+      {
+        "name": "2.0 Turbo",
+        "fuel": "Gasolina",
+        "power_hp": 280,
+        "displacement_cc": 1995,
+        "engine_code": null,
+        "year_from": 2016,
+        "year_to": 2024
+      },
+      {
+        "name": "2.2 JTDM",
+        "fuel": "Diésel",
+        "power_hp": 190,
+        "displacement_cc": 2143,
+        "engine_code": null,
+        "year_from": 2016,
+        "year_to": 2024
+      },
+      {
+        "name": "2.9 V6 Quadrifoglio",
+        "fuel": "Gasolina",
+        "power_hp": 510,
+        "displacement_cc": 2891,
+        "engine_code": null,
+        "year_from": 2016,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Honda",
+    "model": "Civic",
+    "engines": [
+      {
+        "name": "1.0 VTEC Turbo",
+        "fuel": "Gasolina",
+        "power_hp": 126,
+        "displacement_cc": 988,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2022
+      },
+      {
+        "name": "1.5 VTEC Turbo",
+        "fuel": "Gasolina",
+        "power_hp": 182,
+        "displacement_cc": 1498,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2024
+      },
+      {
+        "name": "2.0 i-MMD Hybrid",
+        "fuel": "Híbrido",
+        "power_hp": 184,
+        "displacement_cc": 1993,
+        "engine_code": null,
+        "year_from": 2022,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Volvo",
+    "model": "XC60",
+    "engines": [
+      {
+        "name": "B4 Mild Hybrid",
+        "fuel": "Híbrido",
+        "power_hp": 197,
+        "displacement_cc": 1969,
+        "engine_code": null,
+        "year_from": 2019,
+        "year_to": 2024
+      },
+      {
+        "name": "T6 Twin Engine",
+        "fuel": "Híbrido",
+        "power_hp": 340,
+        "displacement_cc": 1969,
+        "engine_code": null,
+        "year_from": 2018,
+        "year_to": 2024
+      },
+      {
+        "name": "D4",
+        "fuel": "Diésel",
+        "power_hp": 190,
+        "displacement_cc": 1969,
+        "engine_code": null,
+        "year_from": 2008,
+        "year_to": 2018
+      }
+    ]
+  },
+  {
+    "brand": "Porsche",
+    "model": "911",
+    "engines": [
+      {
+        "name": "3.0 Twin-Turbo",
+        "fuel": "Gasolina",
+        "power_hp": 385,
+        "displacement_cc": 2981,
+        "engine_code": null,
+        "year_from": 2015,
+        "year_to": 2024
+      },
+      {
+        "name": "3.0 Twin-Turbo S",
+        "fuel": "Gasolina",
+        "power_hp": 450,
+        "displacement_cc": 2981,
+        "engine_code": null,
+        "year_from": 2015,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Mazda",
+    "model": "CX-5",
+    "engines": [
+      {
+        "name": "2.0 Skyactiv-G",
+        "fuel": "Gasolina",
+        "power_hp": 165,
+        "displacement_cc": 1998,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2024
+      },
+      {
+        "name": "2.2 Skyactiv-D",
+        "fuel": "Diésel",
+        "power_hp": 150,
+        "displacement_cc": 2191,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Tesla",
+    "model": "Model 3",
+    "engines": [
+      {
+        "name": "RWD",
+        "fuel": "Eléctrico",
+        "power_hp": 283,
+        "displacement_cc": null,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2024
+      },
+      {
+        "name": "Long Range AWD",
+        "fuel": "Eléctrico",
+        "power_hp": 351,
+        "displacement_cc": null,
+        "engine_code": null,
+        "year_from": 2018,
+        "year_to": 2024
+      },
+      {
+        "name": "Performance",
+        "fuel": "Eléctrico",
+        "power_hp": 513,
+        "displacement_cc": null,
+        "engine_code": null,
+        "year_from": 2018,
+        "year_to": 2024
+      }
+    ]
   }
 ]

@@ -184,8 +184,8 @@ export default function App() {
         <p className="eyebrow">BBDD para mecánicos</p>
         <h1>Motorpedia</h1>
         <p className="lede">
-          Consulta marca → modelo → año → motor. Verás aceite, filtros, ruedas, correas y el resto
-          de la ficha.
+          Elige marca → modelo → año → motor. Al completar la selección verás toda la ficha:
+          aceites, filtros, correas, ruedas, frenos, bujías y fallos frecuentes.
         </p>
         {booting && <p className="notice">{bootMsg}</p>}
       </header>

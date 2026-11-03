@@ -107,17 +107,29 @@ export default function WorkshopPanel({ engineId, vehicle, sheetContent }) {
       {error && <p className="error">{error}</p>}
       {loading && <p className="muted">Cargando ficha completa del vehículo…</p>}
 
-      {activeSlug === 'ficha' ? (
+      {(activeSlug === 'ficha' || activeSlug === 'todo') && (
         <div className="category-panel">
-          <h3>Ficha técnica</h3>
-          <p className="muted">Datos generales del vehículo</p>
-          {sheetContent}
+          {activeSlug === 'todo' ? (
+            <p className="muted small">
+              {vehicle.brand.name} {vehicle.model.name} {vehicle.year.year} · {vehicle.engine.name}{' '}
+              · vista completa
+            </p>
+          ) : null}
+          <section className="spec-block workshop-section">
+            <h3>Ficha técnica</h3>
+            <p className="muted small">Datos generales del vehículo</p>
+            {sheetContent}
+          </section>
         </div>
-      ) : (
+      )}
+
+      {activeSlug !== 'ficha' && (
         <div className="category-panel">
-          <p className="muted small">
-            {vehicle.brand.name} {vehicle.model.name} {vehicle.year.year} · {vehicle.engine.name}
-          </p>
+          {activeSlug !== 'todo' && (
+            <p className="muted small">
+              {vehicle.brand.name} {vehicle.model.name} {vehicle.year.year} · {vehicle.engine.name}
+            </p>
+          )}
 
           {!loading && visibleSections.length === 0 && (
             <div className="empty-state">
