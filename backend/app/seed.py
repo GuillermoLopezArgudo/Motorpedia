@@ -6,12 +6,13 @@ from app.models import Brand, CarModel, Category, Engine, ModelYear, TechSheet, 
 
 DEFAULT_CATEGORIES = [
     ("ficha", "Ficha técnica", "Datos generales del vehículo", 0),
-    ("correas", "Correas", "Correas de distribución, auxiliar y tensores", 10),
+    ("aceites", "Aceites y fluidos", "Motor, caja, frenos, refrigerante", 10),
     ("filtros", "Filtros", "Aceite, aire, combustible y habitáculo", 20),
-    ("aceites", "Aceites y fluidos", "Motor, caja, frenos, refrigerante", 30),
-    ("frenos", "Frenos", "Pastillas, discos y líquido", 40),
-    ("bujias", "Bujías / calentadores", "Encendido o precalentamiento", 50),
-    ("fallos", "Fallos frecuentes", "Problemas típicos de este motor", 60),
+    ("correas", "Correas", "Correas de distribución, auxiliar y tensores", 30),
+    ("ruedas", "Ruedas / neumáticos", "Medidas y perfil habituales", 40),
+    ("frenos", "Frenos", "Pastillas, discos y líquido", 50),
+    ("bujias", "Bujías / calentadores", "Encendido o precalentamiento", 60),
+    ("fallos", "Fallos frecuentes", "Problemas típicos de este motor", 70),
 ]
 
 

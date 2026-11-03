@@ -34,6 +34,14 @@ def health():
     return {"status": "ok", "app": "Motorpedia"}
 
 
+@router.post("/bootstrap")
+def bootstrap(db: Session = Depends(get_db)):
+    """Auto-importa catálogo y rellena fichas/taller si hace falta (al cargar la web)."""
+    from app.bootstrap import bootstrap_catalog
+
+    return bootstrap_catalog(db)
+
+
 @router.get("/brands/catalog", response_model=list[CatalogBrandOut])
 def brand_catalog(db: Session = Depends(get_db)):
     existing = {name.casefold() for (name,) in db.query(Brand.name).all()}

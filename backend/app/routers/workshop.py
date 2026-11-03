@@ -85,6 +85,43 @@ def list_category_items(engine_id: int, slug: str, db: Session = Depends(get_db)
     )
 
 
+@router.get("/engines/{engine_id}/workshop/full")
+def workshop_full(engine_id: int, db: Session = Depends(get_db)):
+    """Todas las categorías con sus ítems en una sola respuesta (vista mecánico)."""
+    engine = db.get(Engine, engine_id)
+    if not engine:
+        raise HTTPException(404, "Motor no encontrado")
+
+    categories = db.query(Category).order_by(Category.sort_order, Category.name).all()
+    out = []
+    for cat in categories:
+        if cat.slug == "ficha":
+            continue
+        items = (
+            db.query(WorkshopItem)
+            .filter(
+                WorkshopItem.engine_id == engine_id,
+                WorkshopItem.category_id == cat.id,
+            )
+            .order_by(WorkshopItem.is_recommended.desc(), WorkshopItem.title)
+            .all()
+        )
+        out.append(
+            {
+                "id": cat.id,
+                "slug": cat.slug,
+                "name": cat.name,
+                "description": cat.description,
+                "sort_order": cat.sort_order,
+                "item_count": len(items),
+                "items": [
+                    WorkshopItemOut.model_validate(i).model_dump() for i in items
+                ],
+            }
+        )
+    return out
+
+
 @router.post(
     "/engines/{engine_id}/categories/{slug}/items",
     response_model=WorkshopItemOut,

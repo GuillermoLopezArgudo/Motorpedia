@@ -19,7 +19,6 @@ export default function App() {
   const [models, setModels] = useState([])
   const [years, setYears] = useState([])
   const [engines, setEngines] = useState([])
-  const [catalog, setCatalog] = useState([])
 
   const [brandId, setBrandId] = useState('')
   const [modelId, setModelId] = useState('')
@@ -34,63 +33,43 @@ export default function App() {
   const [newModel, setNewModel] = useState('')
   const [newYear, setNewYear] = useState('')
   const [newEngineName, setNewEngineName] = useState('')
-  const [selectedCatalog, setSelectedCatalog] = useState([])
-  const [catalogFilter, setCatalogFilter] = useState('')
 
   const [error, setError] = useState('')
   const [notice, setNotice] = useState('')
   const [loading, setLoading] = useState(false)
   const [saving, setSaving] = useState(false)
-  const [importingTree, setImportingTree] = useState(false)
-  const [treePreview, setTreePreview] = useState(null)
+  const [booting, setBooting] = useState(true)
+  const [bootMsg, setBootMsg] = useState('Preparando catálogo de vehículos…')
 
   const refreshBrands = () => api.brands().then(setBrands)
-  const refreshCatalog = () => api.brandCatalog().then(setCatalog)
 
   useEffect(() => {
-    // Cargas independientes: si falla el catálogo, igual se ven las marcas
-    refreshBrands().catch((e) => setError(e.message || 'No se pudo cargar marcas'))
-    refreshCatalog().catch(() => {})
-    api.vehiclesCatalog().then(setTreePreview).catch(() => {})
-  }, [])
-
-  async function handleImportVehicleTree() {
-    setImportingTree(true)
-    setError('')
-    setNotice('')
-    try {
-      const result = await api.importVehicles({})
-      await refreshBrands()
-      setNotice(
-        `Árbol importado: +${result.brands_created} marcas, +${result.models_created} modelos, +${result.years_created} años, +${result.engines_created ?? 0} motores. ${result.note}`,
-      )
-    } catch (err) {
-      setError(err.message)
-    } finally {
-      setImportingTree(false)
-    }
-  }
-
-  async function handleSeedContent() {
-    setImportingTree(true)
-    setError('')
-    setNotice('')
-    try {
-      const result = await api.seedContent()
-      if (engineId) {
-        const refreshed = await api.vehicle(engineId)
-        setVehicle(refreshed)
-        setSheetForm(sheetToForm(refreshed.sheet))
+    let cancelled = false
+    async function boot() {
+      setBooting(true)
+      setBootMsg('Importando marcas, modelos, años y motores…')
+      setError('')
+      try {
+        const result = await api.bootstrap()
+        if (cancelled) return
+        setBootMsg(result.message || 'Catálogo listo.')
+        await refreshBrands()
+        if (!cancelled) setNotice(result.message)
+      } catch (e) {
+        if (!cancelled) {
+          setError(e.message || 'No se pudo preparar el catálogo')
+          // Intentar al menos marcas por si el bootstrap falla a medias
+          refreshBrands().catch(() => {})
+        }
+      } finally {
+        if (!cancelled) setBooting(false)
       }
-      setNotice(
-        `Contenido generado: +${result.sheets_created} fichas, +${result.items_created} ítems de taller (plantillas orientativas).`,
-      )
-    } catch (err) {
-      setError(err.message)
-    } finally {
-      setImportingTree(false)
     }
-  }
+    boot()
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   useEffect(() => {
     setModels([])
@@ -143,11 +122,6 @@ export default function App() {
   }, [engineId])
 
   const sheet = vehicle?.sheet
-  const pendingCatalog = catalog.filter((b) => !b.imported)
-  const filteredCatalog = pendingCatalog.filter((b) =>
-    b.name.toLowerCase().includes(catalogFilter.trim().toLowerCase()),
-  )
-
   async function handleSave(e) {
     e.preventDefault()
     if (!engineId) return
@@ -216,29 +190,6 @@ export default function App() {
     }
   }
 
-  async function handleImportBrands() {
-    if (!selectedCatalog.length) return
-    setError('')
-    try {
-      const result = await api.importBrands(selectedCatalog)
-      await Promise.all([refreshBrands(), refreshCatalog()])
-      setSelectedCatalog([])
-      setNotice(
-        result.created.length
-          ? `Importadas: ${result.created.join(', ')}.`
-          : 'No había marcas nuevas que importar.',
-      )
-    } catch (err) {
-      setError(err.message)
-    }
-  }
-
-  function toggleCatalogName(name) {
-    setSelectedCatalog((prev) =>
-      prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name],
-    )
-  }
-
   function emptyHint() {
     if (!brandId) return 'Elige una marca para empezar la cascada marca → modelo → año → motor.'
     if (!models.length) return 'Esta marca aún no tiene modelos. Añade el primero abajo.'
@@ -251,6 +202,7 @@ export default function App() {
   }
 
   const hint = emptyHint()
+  const filtersDisabled = booting
 
   return (
     <div className="page">
@@ -258,16 +210,29 @@ export default function App() {
         <p className="eyebrow">BBDD para mecánicos</p>
         <h1>Motorpedia</h1>
         <p className="lede">
-          Elige marca, modelo, año y motor. Consulta ficha técnica, correas, filtros, aceites y más.
+          Elige marca → modelo → año → motor. Al completar la selección verás aceite, filtros,
+          ruedas, correas y el resto de la ficha.
         </p>
+        {booting && <p className="notice">{bootMsg}</p>}
       </header>
 
       <section className="panel">
+        <p className="muted small" style={{ marginBottom: '1rem' }}>
+          {!brandId && '1/4 · Elige una marca'}
+          {brandId && !modelId && '2/4 · Elige un modelo'}
+          {brandId && modelId && !yearId && '3/4 · Elige un año'}
+          {brandId && modelId && yearId && !engineId && '4/4 · Elige un motor'}
+          {engineId && vehicle && 'Listo · Ficha completa del vehículo abajo'}
+        </p>
         <div className="filters">
           <label>
             Marca
-            <select value={brandId} onChange={(e) => setBrandId(e.target.value)}>
-              <option value="">Selecciona marca</option>
+            <select
+              value={brandId}
+              onChange={(e) => setBrandId(e.target.value)}
+              disabled={filtersDisabled}
+            >
+              <option value="">{booting ? 'Cargando marcas…' : 'Selecciona marca'}</option>
               {brands.map((b) => (
                 <option key={b.id} value={b.id}>
                   {b.name}
@@ -560,81 +525,6 @@ export default function App() {
               </section>
             ))}
           </form>
-        )}
-      </section>
-
-      <section className="panel catalog">
-        <div className="sheet-head">
-          <div>
-            <h2>Árbol de vehículos (UE)</h2>
-            <p className="muted">
-              Importa marca → modelo → años y motores típicos (~{treePreview?.brands ?? '…'}{' '}
-              marcas). La ficha/piezas de taller se completan aparte.
-            </p>
-          </div>
-          <div className="form-actions">
-            <button type="button" onClick={handleImportVehicleTree} disabled={importingTree}>
-              {importingTree ? 'Importando…' : 'Importar árboles y motores'}
-            </button>
-            <button
-              type="button"
-              className="btn-secondary"
-              onClick={handleSeedContent}
-              disabled={importingTree}
-            >
-              Rellenar fichas / taller vacíos
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section className="panel catalog">
-        <div className="sheet-head">
-          <div>
-            <h2>Catálogo de marcas</h2>
-            <p className="muted">
-              Lista de fabricantes reales. Importa solo nombres; los modelos se añaden después.
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={handleImportBrands}
-            disabled={!selectedCatalog.length}
-          >
-            Importar seleccionadas ({selectedCatalog.length})
-          </button>
-        </div>
-
-        <label className="catalog-filter">
-          Filtrar
-          <input
-            value={catalogFilter}
-            onChange={(e) => setCatalogFilter(e.target.value)}
-            placeholder="Buscar marca…"
-          />
-        </label>
-
-        {pendingCatalog.length === 0 ? (
-          <p className="muted">Todas las marcas del catálogo ya están en la base de datos.</p>
-        ) : (
-          <ul className="catalog-list">
-            {filteredCatalog.map((item) => (
-              <li key={item.name}>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={selectedCatalog.includes(item.name)}
-                    onChange={() => toggleCatalogName(item.name)}
-                  />
-                  {item.name}
-                </label>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {!filteredCatalog.length && pendingCatalog.length > 0 && (
-          <p className="muted">Ninguna marca coincide con el filtro.</p>
         )}
       </section>
 

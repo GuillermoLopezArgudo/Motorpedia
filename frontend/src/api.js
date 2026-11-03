@@ -30,6 +30,7 @@ async function request(path, options = {}) {
 
 export const api = {
   health: () => request('/api/health'),
+  bootstrap: () => request('/api/bootstrap', { method: 'POST', body: '{}' }),
   brands: () => request('/api/brands'),
   brandCatalog: () => request('/api/brands/catalog'),
   importBrands: (names) =>
@@ -66,6 +67,7 @@ export const api = {
       body: JSON.stringify(payload),
     }),
   workshop: (engineId) => request(`/api/engines/${engineId}/workshop`),
+  workshopFull: (engineId) => request(`/api/engines/${engineId}/workshop/full`),
   categoryItems: (engineId, slug) =>
     request(`/api/engines/${engineId}/categories/${slug}/items`),
   createWorkshopItem: (engineId, slug, payload) =>

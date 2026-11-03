@@ -152,6 +152,22 @@ def _items_for_engine(engine: Engine, categories: dict) -> list[WorkshopItem]:
             notes="Revisar grietas y tensores en cada mantenimiento.",
         )
 
+    # Ruedas
+    add(
+        "ruedas",
+        title="Medida de neumático (orientativa)",
+        notes=(
+            "Confirmar en lateral del neumático o placa de fabricante. "
+            "Ejemplos habituales según segmento: 185/65 R15, 205/55 R16, 225/45 R17. "
+            "Presión según carga/velocidad en tapa de combustible o marco de puerta."
+        ),
+    )
+    add(
+        "ruedas",
+        title="Par de apriete de rueda",
+        notes="Típico 110–140 Nm en turismos; verificar valor exacto del modelo.",
+    )
+
     # Frenos
     add(
         "frenos",
@@ -198,13 +214,29 @@ def seed_baseline_content(db: Session) -> dict:
             db.add(_sheet_for_engine(engine))
             sheets_created += 1
 
-        has_items = (
-            db.query(WorkshopItem).filter(WorkshopItem.engine_id == engine.id).first()
-        )
-        if not has_items:
-            batch = _items_for_engine(engine, categories)
+        existing_cat_ids = {
+            row[0]
+            for row in db.query(WorkshopItem.category_id)
+            .filter(WorkshopItem.engine_id == engine.id)
+            .distinct()
+            .all()
+        }
+
+        batch = _items_for_engine(engine, categories)
+        if not existing_cat_ids:
             db.add_all(batch)
             items_created += len(batch)
+            continue
+
+        # Completar categorías nuevas (p. ej. ruedas) sin pisar lo ya curado
+        missing_cat_ids = {
+            item.category_id for item in batch if item.category_id not in existing_cat_ids
+        }
+        for item in batch:
+            if item.category_id not in missing_cat_ids:
+                continue
+            db.add(item)
+            items_created += 1
 
     db.commit()
     return {"sheets_created": sheets_created, "items_created": items_created}
