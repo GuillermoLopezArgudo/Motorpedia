@@ -61,7 +61,7 @@ def vehicles_catalog_preview():
 
 @router.post("/vehicles/import", response_model=VehicleTreeImportOut)
 def vehicles_import(payload: VehicleTreeImportIn, db: Session = Depends(get_db)):
-    """Importa marca → modelo → años. No crea motores ni piezas (eso es contenido de taller)."""
+    """Importa marca → modelo → años/motores y rellena plantillas de taller orientativas."""
     if payload.year_from and payload.year_to and payload.year_from > payload.year_to:
         raise HTTPException(400, "year_from no puede ser mayor que year_to")
     result = import_vehicle_tree(
@@ -70,7 +70,22 @@ def vehicles_import(payload: VehicleTreeImportIn, db: Session = Depends(get_db))
         year_from=payload.year_from,
         year_to=payload.year_to,
     )
+    from app.content_seed import seed_baseline_content
+
+    content = seed_baseline_content(db)
+    result["note"] = (
+        f"{result.get('note', '')} "
+        f"Contenido taller: +{content['sheets_created']} fichas, +{content['items_created']} ítems."
+    ).strip()
     return VehicleTreeImportOut(**result)
+
+
+@router.post("/vehicles/seed-content")
+def seed_content(db: Session = Depends(get_db)):
+    """Rellena fichas y categorías vacías con plantillas orientativas."""
+    from app.content_seed import seed_baseline_content
+
+    return seed_baseline_content(db)
 
 
 @router.post("/brands/import", response_model=BrandImportOut)

@@ -48,11 +48,10 @@ export default function App() {
   const refreshCatalog = () => api.brandCatalog().then(setCatalog)
 
   useEffect(() => {
-    Promise.all([
-      refreshBrands(),
-      refreshCatalog(),
-      api.vehiclesCatalog().then(setTreePreview),
-    ]).catch((e) => setError(e.message || 'No se pudo cargar marcas'))
+    // Cargas independientes: si falla el catálogo, igual se ven las marcas
+    refreshBrands().catch((e) => setError(e.message || 'No se pudo cargar marcas'))
+    refreshCatalog().catch(() => {})
+    api.vehiclesCatalog().then(setTreePreview).catch(() => {})
   }, [])
 
   async function handleImportVehicleTree() {
@@ -64,6 +63,27 @@ export default function App() {
       await refreshBrands()
       setNotice(
         `Árbol importado: +${result.brands_created} marcas, +${result.models_created} modelos, +${result.years_created} años, +${result.engines_created ?? 0} motores. ${result.note}`,
+      )
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setImportingTree(false)
+    }
+  }
+
+  async function handleSeedContent() {
+    setImportingTree(true)
+    setError('')
+    setNotice('')
+    try {
+      const result = await api.seedContent()
+      if (engineId) {
+        const refreshed = await api.vehicle(engineId)
+        setVehicle(refreshed)
+        setSheetForm(sheetToForm(refreshed.sheet))
+      }
+      setNotice(
+        `Contenido generado: +${result.sheets_created} fichas, +${result.items_created} ítems de taller (plantillas orientativas).`,
       )
     } catch (err) {
       setError(err.message)
@@ -418,11 +438,47 @@ export default function App() {
                     })}
                   </div>
                 ) : (
-                  <div className="empty-state">
-                    <p>Aún no hay ficha técnica para este motor.</p>
-                    <button type="button" onClick={() => setEditing(true)}>
-                      Crear ficha
-                    </button>
+                  <div className="sheet-sections">
+                    <section className="spec-block">
+                      <h3>Datos del motor</h3>
+                      <dl className="specs">
+                        <div>
+                          <dt>Motor</dt>
+                          <dd>{vehicle.engine.name}</dd>
+                        </div>
+                        {vehicle.engine.fuel && (
+                          <div>
+                            <dt>Combustible</dt>
+                            <dd>{vehicle.engine.fuel}</dd>
+                          </div>
+                        )}
+                        {vehicle.engine.power_hp != null && (
+                          <div>
+                            <dt>Potencia</dt>
+                            <dd>{vehicle.engine.power_hp} CV</dd>
+                          </div>
+                        )}
+                        {vehicle.engine.displacement_cc != null && (
+                          <div>
+                            <dt>Cilindrada</dt>
+                            <dd>{vehicle.engine.displacement_cc} cc</dd>
+                          </div>
+                        )}
+                        {vehicle.engine.engine_code && (
+                          <div>
+                            <dt>Código</dt>
+                            <dd>{vehicle.engine.engine_code}</dd>
+                          </div>
+                        )}
+                      </dl>
+                      <p className="muted small" style={{ marginTop: '0.75rem' }}>
+                        Ficha ampliada aún no completada. Puedes editarla o pulsar categorías
+                        (correas, filtros…) cuando haya datos de taller.
+                      </p>
+                      <button type="button" onClick={() => setEditing(true)}>
+                        Completar ficha
+                      </button>
+                    </section>
                   </div>
                 )
               }
@@ -516,9 +572,19 @@ export default function App() {
               marcas). La ficha/piezas de taller se completan aparte.
             </p>
           </div>
-          <button type="button" onClick={handleImportVehicleTree} disabled={importingTree}>
-            {importingTree ? 'Importando…' : 'Importar / actualizar árboles y motores'}
-          </button>
+          <div className="form-actions">
+            <button type="button" onClick={handleImportVehicleTree} disabled={importingTree}>
+              {importingTree ? 'Importando…' : 'Importar árboles y motores'}
+            </button>
+            <button
+              type="button"
+              className="btn-secondary"
+              onClick={handleSeedContent}
+              disabled={importingTree}
+            >
+              Rellenar fichas / taller vacíos
+            </button>
+          </div>
         </div>
       </section>
 

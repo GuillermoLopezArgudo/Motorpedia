@@ -133,109 +133,110 @@ def seed_demo(db: Session) -> None:
             Brand.name == "Seat",
             CarModel.name == "Ibiza",
             ModelYear.year == 2000,
-            Engine.name == "1.9 TDI",
+            Engine.name.like("1.9 TDI%"),
         )
         .first()
     )
-    if not eng_tdi:
-        return
-    if db.query(WorkshopItem).filter(WorkshopItem.engine_id == eng_tdi.id).first():
-        return
+    if eng_tdi and not db.query(WorkshopItem).filter(WorkshopItem.engine_id == eng_tdi.id).first():
+        items = [
+            WorkshopItem(
+                engine_id=eng_tdi.id,
+                category_id=categories["correas"].id,
+                title="Correa de distribución",
+                oem_ref="06A109119C",
+                alt_ref="Gates 5419XS (equiv. orientativa)",
+                position="Distribución",
+                quantity="1",
+                interval_km=90000,
+                interval_months=60,
+                notes="Cambiar kit completo (correa + tensores + bomba de agua recomendada).",
+                is_recommended=True,
+            ),
+            WorkshopItem(
+                engine_id=eng_tdi.id,
+                category_id=categories["correas"].id,
+                title="Correa auxiliar / accesorios",
+                oem_ref="06A903137E",
+                position="Alternador / dirección / A/C según equipamiento",
+                quantity="1",
+                interval_km=60000,
+                interval_months=48,
+                notes="Revisar estado en cada mantenimiento.",
+                is_recommended=True,
+            ),
+            WorkshopItem(
+                engine_id=eng_tdi.id,
+                category_id=categories["filtros"].id,
+                title="Filtro de aceite",
+                oem_ref="06A115561B",
+                quantity="1",
+                notes="Con cada cambio de aceite.",
+                is_recommended=True,
+            ),
+            WorkshopItem(
+                engine_id=eng_tdi.id,
+                category_id=categories["filtros"].id,
+                title="Filtro de aire",
+                oem_ref="6K0129620",
+                quantity="1",
+                interval_km=30000,
+                is_recommended=True,
+            ),
+            WorkshopItem(
+                engine_id=eng_tdi.id,
+                category_id=categories["filtros"].id,
+                title="Filtro de combustible",
+                oem_ref="1J0127401A",
+                quantity="1",
+                interval_km=60000,
+                is_recommended=True,
+            ),
+            WorkshopItem(
+                engine_id=eng_tdi.id,
+                category_id=categories["aceites"].id,
+                title="Aceite de motor",
+                oem_ref="VW 505.01 / 505.00",
+                quantity="≈ 4,3 L",
+                notes="Viscosidad habitual 5W-40 diésel según especificación VW. Verificar tapón.",
+                is_recommended=True,
+            ),
+            WorkshopItem(
+                engine_id=eng_tdi.id,
+                category_id=categories["aceites"].id,
+                title="Líquido de frenos",
+                oem_ref="DOT 4",
+                quantity="Según sangrado",
+                interval_months=24,
+                is_recommended=True,
+            ),
+            WorkshopItem(
+                engine_id=eng_tdi.id,
+                category_id=categories["frenos"].id,
+                title="Pastillas delanteras",
+                position="Eje delantero",
+                quantity="1 juego",
+                notes="Referencia según disco/llanta; verificar al desmontar.",
+                is_recommended=True,
+            ),
+            WorkshopItem(
+                engine_id=eng_tdi.id,
+                category_id=categories["fallos"].id,
+                title="Caudalímetro (MAF) sucio o fallando",
+                notes="Tirones, humo, falta de potencia. Limpieza o sustitución frecuente en TDI de la época.",
+                is_recommended=True,
+            ),
+            WorkshopItem(
+                engine_id=eng_tdi.id,
+                category_id=categories["fallos"].id,
+                title="Inyectores / junta de inyector",
+                notes="Holgura, ruidos metálicos o pérdida de compresión en cámara. Revisar pares de apriete.",
+                is_recommended=True,
+            ),
+        ]
+        db.add_all(items)
+        db.commit()
 
-    items = [
-        WorkshopItem(
-            engine_id=eng_tdi.id,
-            category_id=categories["correas"].id,
-            title="Correa de distribución",
-            oem_ref="06A109119C",
-            alt_ref="Gates 5419XS (equiv. orientativa)",
-            position="Distribución",
-            quantity="1",
-            interval_km=90000,
-            interval_months=60,
-            notes="Cambiar kit completo (correa + tensores + bomba de agua recomendada).",
-            is_recommended=True,
-        ),
-        WorkshopItem(
-            engine_id=eng_tdi.id,
-            category_id=categories["correas"].id,
-            title="Correa auxiliar / accesorios",
-            oem_ref="06A903137E",
-            position="Alternador / dirección / A/C según equipamiento",
-            quantity="1",
-            interval_km=60000,
-            interval_months=48,
-            notes="Revisar estado en cada mantenimiento.",
-            is_recommended=True,
-        ),
-        WorkshopItem(
-            engine_id=eng_tdi.id,
-            category_id=categories["filtros"].id,
-            title="Filtro de aceite",
-            oem_ref="06A115561B",
-            quantity="1",
-            notes="Con cada cambio de aceite.",
-            is_recommended=True,
-        ),
-        WorkshopItem(
-            engine_id=eng_tdi.id,
-            category_id=categories["filtros"].id,
-            title="Filtro de aire",
-            oem_ref="6K0129620",
-            quantity="1",
-            interval_km=30000,
-            is_recommended=True,
-        ),
-        WorkshopItem(
-            engine_id=eng_tdi.id,
-            category_id=categories["filtros"].id,
-            title="Filtro de combustible",
-            oem_ref="1J0127401A",
-            quantity="1",
-            interval_km=60000,
-            is_recommended=True,
-        ),
-        WorkshopItem(
-            engine_id=eng_tdi.id,
-            category_id=categories["aceites"].id,
-            title="Aceite de motor",
-            oem_ref="VW 505.01 / 505.00",
-            quantity="≈ 4,3 L",
-            notes="Viscosidad habitual 5W-40 diésel según especificación VW. Verificar tapón.",
-            is_recommended=True,
-        ),
-        WorkshopItem(
-            engine_id=eng_tdi.id,
-            category_id=categories["aceites"].id,
-            title="Líquido de frenos",
-            oem_ref="DOT 4",
-            quantity="Según sangrado",
-            interval_months=24,
-            is_recommended=True,
-        ),
-        WorkshopItem(
-            engine_id=eng_tdi.id,
-            category_id=categories["frenos"].id,
-            title="Pastillas delanteras",
-            position="Eje delantero",
-            quantity="1 juego",
-            notes="Referencia según disco/llanta; verificar al desmontar.",
-            is_recommended=True,
-        ),
-        WorkshopItem(
-            engine_id=eng_tdi.id,
-            category_id=categories["fallos"].id,
-            title="Caudalímetro (MAF) sucio o fallando",
-            notes="Tirones, humo, falta de potencia. Limpieza o sustitución frecuente en TDI de la época.",
-            is_recommended=True,
-        ),
-        WorkshopItem(
-            engine_id=eng_tdi.id,
-            category_id=categories["fallos"].id,
-            title="Inyectores / junta de inyector",
-            notes="Holgura, ruidos metálicos o pérdida de compresión en cámara. Revisar pares de apriete.",
-            is_recommended=True,
-        ),
-    ]
-    db.add_all(items)
-    db.commit()
+    # Rellenar el resto de motores con plantillas orientativas (ficha + categorías)
+    from app.content_seed import seed_baseline_content
+
+    seed_baseline_content(db)

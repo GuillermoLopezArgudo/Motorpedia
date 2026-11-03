@@ -79,4 +79,6 @@ export const api = {
       method: 'POST',
       body: JSON.stringify(payload),
     }),
+  seedContent: () =>
+    request('/api/vehicles/seed-content', { method: 'POST', body: '{}' }),
 }
