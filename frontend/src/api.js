@@ -65,4 +65,12 @@ export const api = {
       method: 'PUT',
       body: JSON.stringify(payload),
     }),
+  workshop: (engineId) => request(`/api/engines/${engineId}/workshop`),
+  categoryItems: (engineId, slug) =>
+    request(`/api/engines/${engineId}/categories/${slug}/items`),
+  createWorkshopItem: (engineId, slug, payload) =>
+    request(`/api/engines/${engineId}/categories/${slug}/items`, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
 }

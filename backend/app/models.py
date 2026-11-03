@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from sqlalchemy import (
+    Boolean,
     DateTime,
     Float,
     ForeignKey,
@@ -72,6 +73,9 @@ class Engine(Base):
     sheet: Mapped["TechSheet | None"] = relationship(
         back_populates="engine", uselist=False, cascade="all, delete-orphan"
     )
+    workshop_items: Mapped[list["WorkshopItem"]] = relationship(
+        back_populates="engine", cascade="all, delete-orphan"
+    )
 
 
 class TechSheet(Base):
@@ -105,3 +109,46 @@ class TechSheet(Base):
     )
 
     engine: Mapped[Engine] = relationship(back_populates="sheet")
+
+
+class Category(Base):
+    """Categorías de taller: correas, filtros, aceites…"""
+
+    __tablename__ = "categories"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    slug: Mapped[str] = mapped_column(String(60), unique=True, nullable=False, index=True)
+    name: Mapped[str] = mapped_column(String(120), nullable=False)
+    description: Mapped[str | None] = mapped_column(Text, nullable=True)
+    sort_order: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+
+    items: Mapped[list["WorkshopItem"]] = relationship(
+        back_populates="category", cascade="all, delete-orphan"
+    )
+
+
+class WorkshopItem(Base):
+    """Pieza o especificación óptima para un motor concreto (p. ej. correa)."""
+
+    __tablename__ = "workshop_items"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    engine_id: Mapped[int] = mapped_column(
+        ForeignKey("engines.id", ondelete="CASCADE"), nullable=False, index=True
+    )
+    category_id: Mapped[int] = mapped_column(
+        ForeignKey("categories.id", ondelete="CASCADE"), nullable=False, index=True
+    )
+    title: Mapped[str] = mapped_column(String(200), nullable=False)
+    oem_ref: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    alt_ref: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    position: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    quantity: Mapped[str | None] = mapped_column(String(60), nullable=True)
+    interval_km: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    interval_months: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    is_recommended: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+    category: Mapped[Category] = relationship(back_populates="items")
+    engine: Mapped[Engine] = relationship(back_populates="workshop_items")

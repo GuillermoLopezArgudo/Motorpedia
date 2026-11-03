@@ -134,3 +134,63 @@ class VehiclePathOut(BaseModel):
     year: ModelYearOut
     engine: EngineOut
     sheet: TechSheetOut | None = None
+
+
+class CategoryOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    slug: str
+    name: str
+    description: str | None = None
+    sort_order: int
+
+
+class CategorySummaryOut(BaseModel):
+    id: int
+    slug: str
+    name: str
+    description: str | None = None
+    sort_order: int
+    item_count: int
+
+
+class WorkshopItemOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    engine_id: int
+    category_id: int
+    title: str
+    oem_ref: str | None = None
+    alt_ref: str | None = None
+    position: str | None = None
+    quantity: str | None = None
+    interval_km: int | None = None
+    interval_months: int | None = None
+    notes: str | None = None
+    is_recommended: bool = True
+
+
+class WorkshopItemCreate(BaseModel):
+    title: str = Field(min_length=1, max_length=200)
+    oem_ref: str | None = Field(default=None, max_length=120)
+    alt_ref: str | None = Field(default=None, max_length=120)
+    position: str | None = Field(default=None, max_length=120)
+    quantity: str | None = Field(default=None, max_length=60)
+    interval_km: int | None = None
+    interval_months: int | None = None
+    notes: str | None = None
+    is_recommended: bool = True
+
+
+class WorkshopItemUpdate(BaseModel):
+    title: str | None = Field(default=None, min_length=1, max_length=200)
+    oem_ref: str | None = Field(default=None, max_length=120)
+    alt_ref: str | None = Field(default=None, max_length=120)
+    position: str | None = Field(default=None, max_length=120)
+    quantity: str | None = Field(default=None, max_length=60)
+    interval_km: int | None = None
+    interval_months: int | None = None
+    notes: str | None = None
+    is_recommended: bool | None = None

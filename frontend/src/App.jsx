@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { api } from './api'
+import WorkshopPanel from './WorkshopPanel'
 import {
   ENGINE_FIELDS,
   SHEET_SECTIONS,
@@ -213,10 +214,10 @@ export default function App() {
   return (
     <div className="page">
       <header className="hero">
-        <p className="eyebrow">Fichas técnicas</p>
+        <p className="eyebrow">BBDD para mecánicos</p>
         <h1>Motorpedia</h1>
         <p className="lede">
-          Consulta y completa información de un coche por marca, modelo, año y motor.
+          Elige marca, modelo, año y motor. Consulta ficha técnica, correas, filtros, aceites y más.
         </p>
       </header>
 
@@ -360,44 +361,51 @@ export default function App() {
                   {vehicle.engine.engine_code ? ` · ${vehicle.engine.engine_code}` : ''}
                 </p>
               </div>
-              <button type="button" className="btn-secondary" onClick={() => setEditing(true)}>
-                {sheetHasContent(sheet) ? 'Editar ficha' : 'Crear ficha'}
-              </button>
             </div>
 
-            {sheetHasContent(sheet) ? (
-              <div className="sheet-sections">
-                {SHEET_SECTIONS.map((section) => {
-                  const rows = section.fields
-                    .map((field) => ({
-                      field,
-                      display: formatSpec(field, sheet[field.key]),
-                    }))
-                    .filter((row) => row.display)
-                  if (!rows.length) return null
-                  return (
-                    <section key={section.id} className="spec-block">
-                      <h3>{section.title}</h3>
-                      <dl className="specs">
-                        {rows.map(({ field, display }) => (
-                          <div key={field.key} className={field.full ? 'spec-full' : undefined}>
-                            <dt>{field.label}</dt>
-                            <dd>{display}</dd>
-                          </div>
-                        ))}
-                      </dl>
-                    </section>
-                  )
-                })}
-              </div>
-            ) : (
-              <div className="empty-state">
-                <p>Aún no hay ficha técnica para este motor.</p>
-                <button type="button" onClick={() => setEditing(true)}>
-                  Crear ficha
-                </button>
-              </div>
-            )}
+            <WorkshopPanel
+              engineId={Number(engineId)}
+              vehicle={vehicle}
+              onEditSheet={() => setEditing(true)}
+              sheetContent={
+                sheetHasContent(sheet) ? (
+                  <div className="sheet-sections">
+                    {SHEET_SECTIONS.map((section) => {
+                      const rows = section.fields
+                        .map((field) => ({
+                          field,
+                          display: formatSpec(field, sheet[field.key]),
+                        }))
+                        .filter((row) => row.display)
+                      if (!rows.length) return null
+                      return (
+                        <section key={section.id} className="spec-block">
+                          <h3>{section.title}</h3>
+                          <dl className="specs">
+                            {rows.map(({ field, display }) => (
+                              <div
+                                key={field.key}
+                                className={field.full ? 'spec-full' : undefined}
+                              >
+                                <dt>{field.label}</dt>
+                                <dd>{display}</dd>
+                              </div>
+                            ))}
+                          </dl>
+                        </section>
+                      )
+                    })}
+                  </div>
+                ) : (
+                  <div className="empty-state">
+                    <p>Aún no hay ficha técnica para este motor.</p>
+                    <button type="button" onClick={() => setEditing(true)}>
+                      Crear ficha
+                    </button>
+                  </div>
+                )
+              }
+            />
           </article>
         )}
 
