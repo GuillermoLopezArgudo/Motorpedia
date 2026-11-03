@@ -41,6 +41,15 @@ npm run dev
 
 Web: http://127.0.0.1:5173
 
+## MVP actual
+
+- Cascada marca → modelo → año → motor y ficha técnica (dimensiones, consumo, prestaciones…).
+- Crear/editar ficha y datos de motor desde la UI.
+- Añadir modelo / año / motor sobre la marca seleccionada.
+- Catálogo de marcas (`backend/data/brands_catalog.json`): importar nombres reales sin inventar modelos.
+
+Seed demo: Seat / Volkswagen con unas pocas fichas de ejemplo.
+
 ## Autor
 
 Guillermo López Argudo
