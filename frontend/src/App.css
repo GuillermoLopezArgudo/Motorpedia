@@ -1,0 +1,144 @@
+:root {
+  --bg: #0f1419;
+  --panel: #171e27;
+  --line: #2a3544;
+  --ink: #e8eef4;
+  --mute: #8b9aab;
+  --accent: #ff6b2c;
+  --accent-soft: #ff8f5c;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(80% 50% at 10% 0%, rgba(255, 107, 44, 0.18), transparent 55%),
+    var(--bg);
+}
+
+.page {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 3rem;
+}
+
+.hero h1 {
+  margin: 0.2rem 0 0.6rem;
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  letter-spacing: -0.03em;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.lede {
+  margin: 0;
+  color: var(--mute);
+  max-width: 36rem;
+  line-height: 1.5;
+}
+
+.panel {
+  margin-top: 2rem;
+  padding: 1.25rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.filters {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--mute);
+}
+
+select {
+  min-height: 2.6rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #0f1419;
+  color: var(--ink);
+  padding: 0.45rem 0.7rem;
+  font-size: 0.95rem;
+}
+
+select:disabled {
+  opacity: 0.45;
+}
+
+.sheet {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.sheet h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.45rem;
+}
+
+.engine-line {
+  margin: 0 0 1rem;
+  color: var(--accent-soft);
+  font-weight: 600;
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 0.55rem 1rem;
+  margin: 0;
+}
+
+.specs dt {
+  color: var(--mute);
+  font-size: 0.85rem;
+}
+
+.specs dd {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.muted {
+  color: var(--mute);
+}
+
+.error {
+  color: #ff8f8f;
+  margin-top: 1rem;
+}
+
+.foot {
+  margin-top: 2rem;
+  color: var(--mute);
+  font-size: 0.85rem;
+}
