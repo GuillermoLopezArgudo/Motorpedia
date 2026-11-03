@@ -8,6 +8,24 @@ class BrandOut(BaseModel):
     name: str
 
 
+class BrandCreate(BaseModel):
+    name: str = Field(min_length=1, max_length=120)
+
+
+class BrandImportIn(BaseModel):
+    names: list[str] = Field(min_length=1)
+
+
+class BrandImportOut(BaseModel):
+    created: list[str]
+    skipped: list[str]
+
+
+class CatalogBrandOut(BaseModel):
+    name: str
+    imported: bool
+
+
 class CarModelOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -16,12 +34,20 @@ class CarModelOut(BaseModel):
     name: str
 
 
+class CarModelCreate(BaseModel):
+    name: str = Field(min_length=1, max_length=120)
+
+
 class ModelYearOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
     model_id: int
     year: int
+
+
+class ModelYearCreate(BaseModel):
+    year: int = Field(ge=1886, le=2100)
 
 
 class EngineOut(BaseModel):
@@ -33,6 +59,29 @@ class EngineOut(BaseModel):
     fuel: str | None = None
     power_hp: int | None = None
     displacement_cc: int | None = None
+    torque_nm: int | None = None
+    cylinders: int | None = None
+    engine_code: str | None = None
+
+
+class EngineCreate(BaseModel):
+    name: str = Field(min_length=1, max_length=120)
+    fuel: str | None = Field(default=None, max_length=60)
+    power_hp: int | None = None
+    displacement_cc: int | None = None
+    torque_nm: int | None = None
+    cylinders: int | None = None
+    engine_code: str | None = Field(default=None, max_length=60)
+
+
+class EngineUpdate(BaseModel):
+    name: str | None = Field(default=None, min_length=1, max_length=120)
+    fuel: str | None = Field(default=None, max_length=60)
+    power_hp: int | None = None
+    displacement_cc: int | None = None
+    torque_nm: int | None = None
+    cylinders: int | None = None
+    engine_code: str | None = Field(default=None, max_length=60)
 
 
 class TechSheetOut(BaseModel):
@@ -46,15 +95,17 @@ class TechSheetOut(BaseModel):
     seats: int | None = None
     transmission: str | None = None
     drive: str | None = None
+    length_mm: int | None = None
+    width_mm: int | None = None
+    height_mm: int | None = None
+    wheelbase_mm: int | None = None
+    weight_kg: int | None = None
+    fuel_tank_l: float | None = None
+    consumption_l_100km: float | None = None
+    co2_g_km: int | None = None
+    acceleration_0_100: float | None = None
+    top_speed_kmh: int | None = None
     notes: str | None = None
-
-
-class VehiclePathOut(BaseModel):
-    brand: BrandOut
-    model: CarModelOut
-    year: ModelYearOut
-    engine: EngineOut
-    sheet: TechSheetOut | None = None
 
 
 class TechSheetUpdate(BaseModel):
@@ -64,4 +115,22 @@ class TechSheetUpdate(BaseModel):
     seats: int | None = None
     transmission: str | None = Field(default=None, max_length=80)
     drive: str | None = Field(default=None, max_length=80)
+    length_mm: int | None = None
+    width_mm: int | None = None
+    height_mm: int | None = None
+    wheelbase_mm: int | None = None
+    weight_kg: int | None = None
+    fuel_tank_l: float | None = None
+    consumption_l_100km: float | None = None
+    co2_g_km: int | None = None
+    acceleration_0_100: float | None = None
+    top_speed_kmh: int | None = None
     notes: str | None = None
+
+
+class VehiclePathOut(BaseModel):
+    brand: BrandOut
+    model: CarModelOut
+    year: ModelYearOut
+    engine: EngineOut
+    sheet: TechSheetOut | None = None

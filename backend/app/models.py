@@ -1,6 +1,15 @@
 from datetime import datetime
 
-from sqlalchemy import DateTime, ForeignKey, Integer, String, Text, UniqueConstraint, func
+from sqlalchemy import (
+    DateTime,
+    Float,
+    ForeignKey,
+    Integer,
+    String,
+    Text,
+    UniqueConstraint,
+    func,
+)
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
@@ -54,6 +63,9 @@ class Engine(Base):
     fuel: Mapped[str | None] = mapped_column(String(60), nullable=True)
     power_hp: Mapped[int | None] = mapped_column(Integer, nullable=True)
     displacement_cc: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    torque_nm: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    cylinders: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    engine_code: Mapped[str | None] = mapped_column(String(60), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
     model_year: Mapped[ModelYear] = relationship(back_populates="engines")
@@ -77,6 +89,16 @@ class TechSheet(Base):
     seats: Mapped[int | None] = mapped_column(Integer, nullable=True)
     transmission: Mapped[str | None] = mapped_column(String(80), nullable=True)
     drive: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    length_mm: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    width_mm: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    height_mm: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    wheelbase_mm: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    weight_kg: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    fuel_tank_l: Mapped[float | None] = mapped_column(Float, nullable=True)
+    consumption_l_100km: Mapped[float | None] = mapped_column(Float, nullable=True)
+    co2_g_km: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    acceleration_0_100: Mapped[float | None] = mapped_column(Float, nullable=True)
+    top_speed_kmh: Mapped[int | None] = mapped_column(Integer, nullable=True)
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()

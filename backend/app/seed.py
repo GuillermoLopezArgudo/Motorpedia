@@ -1,4 +1,4 @@
-"""Datos de ejemplo para desarrollo local."""
+"""Datos de ejemplo para desarrollo local (pocas fichas reales de demo)."""
 
 from sqlalchemy.orm import Session
 
@@ -33,6 +33,9 @@ def seed_demo(db: Session) -> None:
         fuel="Diésel",
         power_hp=90,
         displacement_cc=1896,
+        torque_nm=210,
+        cylinders=4,
+        engine_code="AGR",
     )
     eng_14 = Engine(
         model_year_id=ibiza_2000.id,
@@ -40,6 +43,8 @@ def seed_demo(db: Session) -> None:
         fuel="Gasolina",
         power_hp=60,
         displacement_cc=1390,
+        torque_nm=116,
+        cylinders=4,
     )
     eng_93 = Engine(
         model_year_id=ibiza_1993.id,
@@ -47,6 +52,7 @@ def seed_demo(db: Session) -> None:
         fuel="Gasolina",
         power_hp=75,
         displacement_cc=1498,
+        cylinders=4,
     )
     eng_leon = Engine(
         model_year_id=leon_2018.id,
@@ -54,6 +60,9 @@ def seed_demo(db: Session) -> None:
         fuel="Gasolina",
         power_hp=150,
         displacement_cc=1498,
+        torque_nm=250,
+        cylinders=4,
+        engine_code="DADA",
     )
     eng_golf = Engine(
         model_year_id=golf_2015.id,
@@ -61,6 +70,8 @@ def seed_demo(db: Session) -> None:
         fuel="Diésel",
         power_hp=150,
         displacement_cc=1968,
+        torque_nm=320,
+        cylinders=4,
     )
     db.add_all([eng_tdi, eng_14, eng_93, eng_leon, eng_golf])
     db.flush()
@@ -74,7 +85,17 @@ def seed_demo(db: Session) -> None:
             seats=5,
             transmission="Manual 5 velocidades",
             drive="Delantera",
-            notes="Datos orientativos de demo. Sustituir por ficha real.",
+            length_mm=3877,
+            width_mm=1640,
+            height_mm=1415,
+            wheelbase_mm=2443,
+            weight_kg=1125,
+            fuel_tank_l=45,
+            consumption_l_100km=5.0,
+            co2_g_km=135,
+            acceleration_0_100=12.5,
+            top_speed_kmh=180,
+            notes="Datos orientativos de demo. Sustituir por ficha verificada.",
         )
     )
     db.commit()
