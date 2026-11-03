@@ -2,15 +2,9 @@ import { useEffect, useState } from 'react'
 import { api } from './api'
 import WorkshopPanel from './WorkshopPanel'
 import {
-  ENGINE_FIELDS,
   SHEET_SECTIONS,
-  emptySheetForm,
-  engineToForm,
-  formToEnginePayload,
-  formToSheetPayload,
   formatSpec,
   sheetHasContent,
-  sheetToForm,
 } from './sheetFields'
 import './App.css'
 
@@ -26,40 +20,31 @@ export default function App() {
   const [engineId, setEngineId] = useState('')
 
   const [vehicle, setVehicle] = useState(null)
-  const [editing, setEditing] = useState(false)
-  const [sheetForm, setSheetForm] = useState(emptySheetForm())
-  const [engineForm, setEngineForm] = useState(engineToForm(null))
-
-  const [newModel, setNewModel] = useState('')
-  const [newYear, setNewYear] = useState('')
-  const [newEngineName, setNewEngineName] = useState('')
-
   const [error, setError] = useState('')
   const [notice, setNotice] = useState('')
   const [loading, setLoading] = useState(false)
-  const [saving, setSaving] = useState(false)
   const [booting, setBooting] = useState(true)
   const [bootMsg, setBootMsg] = useState('Preparando catálogo de vehículos…')
-
-  const refreshBrands = () => api.brands().then(setBrands)
 
   useEffect(() => {
     let cancelled = false
     async function boot() {
       setBooting(true)
-      setBootMsg('Importando marcas, modelos, años y motores…')
+      setBootMsg('Cargando marcas, modelos, años y motores…')
       setError('')
       try {
         const result = await api.bootstrap()
         if (cancelled) return
         setBootMsg(result.message || 'Catálogo listo.')
-        await refreshBrands()
-        if (!cancelled) setNotice(result.message)
+        const list = await api.brands()
+        if (!cancelled) {
+          setBrands(list)
+          setNotice(result.message)
+        }
       } catch (e) {
         if (!cancelled) {
           setError(e.message || 'No se pudo preparar el catálogo')
-          // Intentar al menos marcas por si el bootstrap falla a medias
-          refreshBrands().catch(() => {})
+          api.brands().then(setBrands).catch(() => {})
         }
       } finally {
         if (!cancelled) setBooting(false)
@@ -79,7 +64,6 @@ export default function App() {
     setYearId('')
     setEngineId('')
     setVehicle(null)
-    setEditing(false)
     if (!brandId) return
     api.models(brandId).then(setModels).catch((e) => setError(e.message))
   }, [brandId])
@@ -90,7 +74,6 @@ export default function App() {
     setYearId('')
     setEngineId('')
     setVehicle(null)
-    setEditing(false)
     if (!modelId) return
     api.years(modelId).then(setYears).catch((e) => setError(e.message))
   }, [modelId])
@@ -99,111 +82,101 @@ export default function App() {
     setEngines([])
     setEngineId('')
     setVehicle(null)
-    setEditing(false)
     if (!yearId) return
     api.engines(yearId).then(setEngines).catch((e) => setError(e.message))
   }, [yearId])
 
   useEffect(() => {
     setVehicle(null)
-    setEditing(false)
     if (!engineId) return
     setLoading(true)
     setError('')
     api
       .vehicle(engineId)
-      .then((data) => {
-        setVehicle(data)
-        setSheetForm(sheetToForm(data.sheet))
-        setEngineForm(engineToForm(data.engine))
-      })
+      .then(setVehicle)
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false))
   }, [engineId])
 
   const sheet = vehicle?.sheet
-  async function handleSave(e) {
-    e.preventDefault()
-    if (!engineId) return
-    setSaving(true)
-    setError('')
-    setNotice('')
-    try {
-      const enginePayload = formToEnginePayload(engineForm)
-      const sheetPayload = formToSheetPayload(sheetForm)
-      await api.updateEngine(engineId, enginePayload)
-      const savedSheet = await api.saveSheet(engineId, sheetPayload)
-      const refreshed = await api.vehicle(engineId)
-      setVehicle(refreshed)
-      setSheetForm(sheetToForm(savedSheet))
-      setEngineForm(engineToForm(refreshed.engine))
-      setEngines(await api.engines(yearId))
-      setEditing(false)
-      setNotice('Ficha guardada.')
-    } catch (err) {
-      setError(err.message)
-    } finally {
-      setSaving(false)
-    }
-  }
-
-  async function handleCreateModel(e) {
-    e.preventDefault()
-    if (!brandId || !newModel.trim()) return
-    try {
-      const model = await api.createModel(brandId, newModel.trim())
-      setModels(await api.models(brandId))
-      setModelId(String(model.id))
-      setNewModel('')
-      setNotice(`Modelo «${model.name}» creado.`)
-    } catch (err) {
-      setError(err.message)
-    }
-  }
-
-  async function handleCreateYear(e) {
-    e.preventDefault()
-    if (!modelId || !newYear) return
-    try {
-      const year = await api.createYear(modelId, newYear)
-      setYears(await api.years(modelId))
-      setYearId(String(year.id))
-      setNewYear('')
-      setNotice(`Año ${year.year} creado.`)
-    } catch (err) {
-      setError(err.message)
-    }
-  }
-
-  async function handleCreateEngine(e) {
-    e.preventDefault()
-    if (!yearId || !newEngineName.trim()) return
-    try {
-      const engine = await api.createEngine(yearId, { name: newEngineName.trim() })
-      setEngines(await api.engines(yearId))
-      setEngineId(String(engine.id))
-      setNewEngineName('')
-      setEditing(true)
-      setNotice(`Motor «${engine.name}» creado. Completa la ficha.`)
-    } catch (err) {
-      setError(err.message)
-    }
-  }
 
   function emptyHint() {
-    if (!brandId) return 'Elige una marca para empezar la cascada marca → modelo → año → motor.'
-    if (!models.length) return 'Esta marca aún no tiene modelos. Añade el primero abajo.'
+    if (booting) return 'Espera a que cargue el catálogo…'
+    if (!brandId) return 'Elige una marca para empezar.'
+    if (!models.length) return 'Esta marca aún no tiene modelos en el catálogo.'
     if (!modelId) return 'Selecciona un modelo.'
-    if (!years.length) return 'Este modelo aún no tiene años. Añade uno.'
+    if (!years.length) return 'Este modelo aún no tiene años en el catálogo.'
     if (!yearId) return 'Selecciona un año.'
-    if (!engines.length)
-      return 'Este año aún no tiene motores en el catálogo. Usa «Añadir motor» o prueba otro año.'
-    if (!engineId) return 'Selecciona un motor para ver toda la información del coche.'
+    if (!engines.length) return 'Este año aún no tiene motores en el catálogo. Prueba otro año.'
+    if (!engineId) return 'Selecciona un motor para ver la información.'
     return null
   }
 
   const hint = emptyHint()
   const filtersDisabled = booting
+
+  const sheetContent = sheetHasContent(sheet) ? (
+    <div className="sheet-sections">
+      {SHEET_SECTIONS.map((section) => {
+        const rows = section.fields
+          .map((field) => ({
+            field,
+            display: formatSpec(field, sheet[field.key]),
+          }))
+          .filter((row) => row.display)
+        if (!rows.length) return null
+        return (
+          <section key={section.id} className="spec-block">
+            <h3>{section.title}</h3>
+            <dl className="specs">
+              {rows.map(({ field, display }) => (
+                <div key={field.key} className={field.full ? 'spec-full' : undefined}>
+                  <dt>{field.label}</dt>
+                  <dd>{display}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )
+      })}
+    </div>
+  ) : vehicle ? (
+    <div className="sheet-sections">
+      <section className="spec-block">
+        <h3>Datos del motor</h3>
+        <dl className="specs">
+          <div>
+            <dt>Motor</dt>
+            <dd>{vehicle.engine.name}</dd>
+          </div>
+          {vehicle.engine.fuel && (
+            <div>
+              <dt>Combustible</dt>
+              <dd>{vehicle.engine.fuel}</dd>
+            </div>
+          )}
+          {vehicle.engine.power_hp != null && (
+            <div>
+              <dt>Potencia</dt>
+              <dd>{vehicle.engine.power_hp} CV</dd>
+            </div>
+          )}
+          {vehicle.engine.displacement_cc != null && (
+            <div>
+              <dt>Cilindrada</dt>
+              <dd>{vehicle.engine.displacement_cc} cc</dd>
+            </div>
+          )}
+          {vehicle.engine.engine_code && (
+            <div>
+              <dt>Código</dt>
+              <dd>{vehicle.engine.engine_code}</dd>
+            </div>
+          )}
+        </dl>
+      </section>
+    </div>
+  ) : null
 
   return (
     <div className="page">
@@ -211,8 +184,8 @@ export default function App() {
         <p className="eyebrow">BBDD para mecánicos</p>
         <h1>Motorpedia</h1>
         <p className="lede">
-          Elige marca → modelo → año → motor. Al completar la selección verás aceite, filtros,
-          ruedas, correas y el resto de la ficha.
+          Consulta marca → modelo → año → motor. Verás aceite, filtros, ruedas, correas y el resto
+          de la ficha.
         </p>
         {booting && <p className="notice">{bootMsg}</p>}
       </header>
@@ -223,8 +196,9 @@ export default function App() {
           {brandId && !modelId && '2/4 · Elige un modelo'}
           {brandId && modelId && !yearId && '3/4 · Elige un año'}
           {brandId && modelId && yearId && !engineId && '4/4 · Elige un motor'}
-          {engineId && vehicle && 'Listo · Ficha completa del vehículo abajo'}
+          {engineId && vehicle && 'Listo · Información del vehículo'}
         </p>
+
         <div className="filters">
           <label>
             Marca
@@ -293,55 +267,8 @@ export default function App() {
           </label>
         </div>
 
-        {(brandId || modelId || yearId) && (
-          <div className="quick-create">
-            {brandId && (
-              <form onSubmit={handleCreateModel} className="inline-form">
-                <input
-                  value={newModel}
-                  onChange={(e) => setNewModel(e.target.value)}
-                  placeholder="Nuevo modelo"
-                  aria-label="Nuevo modelo"
-                />
-                <button type="submit" disabled={!newModel.trim()}>
-                  Añadir modelo
-                </button>
-              </form>
-            )}
-            {modelId && (
-              <form onSubmit={handleCreateYear} className="inline-form">
-                <input
-                  type="number"
-                  min="1886"
-                  max="2100"
-                  value={newYear}
-                  onChange={(e) => setNewYear(e.target.value)}
-                  placeholder="Año"
-                  aria-label="Nuevo año"
-                />
-                <button type="submit" disabled={!newYear}>
-                  Añadir año
-                </button>
-              </form>
-            )}
-            {yearId && (
-              <form onSubmit={handleCreateEngine} className="inline-form">
-                <input
-                  value={newEngineName}
-                  onChange={(e) => setNewEngineName(e.target.value)}
-                  placeholder="Nuevo motor (ej. 1.9 TDI)"
-                  aria-label="Nuevo motor"
-                />
-                <button type="submit" disabled={!newEngineName.trim()}>
-                  Añadir motor
-                </button>
-              </form>
-            )}
-          </div>
-        )}
-
         {error && <p className="error">{error}</p>}
-        {notice && <p className="notice">{notice}</p>}
+        {notice && !booting && <p className="notice">{notice}</p>}
         {loading && <p className="muted">Cargando ficha…</p>}
 
         {!loading && !vehicle && hint && (
@@ -350,7 +277,7 @@ export default function App() {
           </div>
         )}
 
-        {vehicle && !editing && (
+        {vehicle && (
           <article className="sheet">
             <div className="sheet-head">
               <div>
@@ -373,159 +300,9 @@ export default function App() {
             <WorkshopPanel
               engineId={Number(engineId)}
               vehicle={vehicle}
-              onEditSheet={() => setEditing(true)}
-              sheetContent={
-                sheetHasContent(sheet) ? (
-                  <div className="sheet-sections">
-                    {SHEET_SECTIONS.map((section) => {
-                      const rows = section.fields
-                        .map((field) => ({
-                          field,
-                          display: formatSpec(field, sheet[field.key]),
-                        }))
-                        .filter((row) => row.display)
-                      if (!rows.length) return null
-                      return (
-                        <section key={section.id} className="spec-block">
-                          <h3>{section.title}</h3>
-                          <dl className="specs">
-                            {rows.map(({ field, display }) => (
-                              <div
-                                key={field.key}
-                                className={field.full ? 'spec-full' : undefined}
-                              >
-                                <dt>{field.label}</dt>
-                                <dd>{display}</dd>
-                              </div>
-                            ))}
-                          </dl>
-                        </section>
-                      )
-                    })}
-                  </div>
-                ) : (
-                  <div className="sheet-sections">
-                    <section className="spec-block">
-                      <h3>Datos del motor</h3>
-                      <dl className="specs">
-                        <div>
-                          <dt>Motor</dt>
-                          <dd>{vehicle.engine.name}</dd>
-                        </div>
-                        {vehicle.engine.fuel && (
-                          <div>
-                            <dt>Combustible</dt>
-                            <dd>{vehicle.engine.fuel}</dd>
-                          </div>
-                        )}
-                        {vehicle.engine.power_hp != null && (
-                          <div>
-                            <dt>Potencia</dt>
-                            <dd>{vehicle.engine.power_hp} CV</dd>
-                          </div>
-                        )}
-                        {vehicle.engine.displacement_cc != null && (
-                          <div>
-                            <dt>Cilindrada</dt>
-                            <dd>{vehicle.engine.displacement_cc} cc</dd>
-                          </div>
-                        )}
-                        {vehicle.engine.engine_code && (
-                          <div>
-                            <dt>Código</dt>
-                            <dd>{vehicle.engine.engine_code}</dd>
-                          </div>
-                        )}
-                      </dl>
-                      <p className="muted small" style={{ marginTop: '0.75rem' }}>
-                        Ficha ampliada aún no completada. Puedes editarla o pulsar categorías
-                        (correas, filtros…) cuando haya datos de taller.
-                      </p>
-                      <button type="button" onClick={() => setEditing(true)}>
-                        Completar ficha
-                      </button>
-                    </section>
-                  </div>
-                )
-              }
+              sheetContent={sheetContent}
             />
           </article>
-        )}
-
-        {vehicle && editing && (
-          <form className="sheet-form" onSubmit={handleSave}>
-            <div className="sheet-head">
-              <h2>
-                Editar · {vehicle.brand.name} {vehicle.model.name} {vehicle.year.year}
-              </h2>
-              <div className="form-actions">
-                <button
-                  type="button"
-                  className="btn-secondary"
-                  onClick={() => {
-                    setSheetForm(sheetToForm(vehicle.sheet))
-                    setEngineForm(engineToForm(vehicle.engine))
-                    setEditing(false)
-                  }}
-                >
-                  Cancelar
-                </button>
-                <button type="submit" disabled={saving}>
-                  {saving ? 'Guardando…' : 'Guardar'}
-                </button>
-              </div>
-            </div>
-
-            <section className="spec-block">
-              <h3>Motor</h3>
-              <div className="form-grid">
-                {ENGINE_FIELDS.map((field) => (
-                  <label key={field.key} className={field.key === 'name' ? 'full' : undefined}>
-                    {field.label}
-                    <input
-                      value={engineForm[field.key]}
-                      onChange={(e) =>
-                        setEngineForm((prev) => ({ ...prev, [field.key]: e.target.value }))
-                      }
-                      required={field.required}
-                    />
-                  </label>
-                ))}
-              </div>
-            </section>
-
-            {SHEET_SECTIONS.map((section) => (
-              <section key={section.id} className="spec-block">
-                <h3>{section.title}</h3>
-                <div className="form-grid">
-                  {section.fields.map((field) => (
-                    <label key={field.key} className={field.full ? 'full' : undefined}>
-                      {field.label}
-                      {field.type === 'textarea' ? (
-                        <textarea
-                          rows={3}
-                          value={sheetForm[field.key]}
-                          onChange={(e) =>
-                            setSheetForm((prev) => ({ ...prev, [field.key]: e.target.value }))
-                          }
-                        />
-                      ) : (
-                        <input
-                          value={sheetForm[field.key]}
-                          onChange={(e) =>
-                            setSheetForm((prev) => ({ ...prev, [field.key]: e.target.value }))
-                          }
-                          inputMode={
-                            field.type === 'int' || field.type === 'float' ? 'decimal' : undefined
-                          }
-                        />
-                      )}
-                    </label>
-                  ))}
-                </div>
-              </section>
-            ))}
-          </form>
         )}
       </section>
 

@@ -57,13 +57,7 @@ function ItemCard({ item }) {
   )
 }
 
-export default function WorkshopPanel({
-  engineId,
-  vehicle,
-  sheetContent,
-  editing,
-  onEditSheet,
-}) {
+export default function WorkshopPanel({ engineId, vehicle, sheetContent }) {
   const [sections, setSections] = useState([])
   const [activeSlug, setActiveSlug] = useState('todo')
   const [loading, setLoading] = useState(false)
@@ -92,9 +86,7 @@ export default function WorkshopPanel({
   ]
 
   const visibleSections =
-    activeSlug === 'todo'
-      ? sections
-      : sections.filter((s) => s.slug === activeSlug)
+    activeSlug === 'todo' ? sections : sections.filter((s) => s.slug === activeSlug)
 
   return (
     <div className="workshop">
@@ -117,24 +109,14 @@ export default function WorkshopPanel({
 
       {activeSlug === 'ficha' ? (
         <div className="category-panel">
-          <div className="sheet-head">
-            <div>
-              <h3>Ficha técnica</h3>
-              <p className="muted">Datos generales del vehículo</p>
-            </div>
-            {!editing && (
-              <button type="button" className="btn-secondary" onClick={onEditSheet}>
-                Editar ficha
-              </button>
-            )}
-          </div>
+          <h3>Ficha técnica</h3>
+          <p className="muted">Datos generales del vehículo</p>
           {sheetContent}
         </div>
       ) : (
         <div className="category-panel">
           <p className="muted small">
-            {vehicle.brand.name} {vehicle.model.name} {vehicle.year.year} ·{' '}
-            {vehicle.engine.name}
+            {vehicle.brand.name} {vehicle.model.name} {vehicle.year.year} · {vehicle.engine.name}
           </p>
 
           {!loading && visibleSections.length === 0 && (
