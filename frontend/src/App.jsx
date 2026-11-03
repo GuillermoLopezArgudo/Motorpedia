@@ -63,7 +63,7 @@ export default function App() {
       const result = await api.importVehicles({})
       await refreshBrands()
       setNotice(
-        `Árbol importado: +${result.brands_created} marcas, +${result.models_created} modelos, +${result.years_created} años. ${result.note}`,
+        `Árbol importado: +${result.brands_created} marcas, +${result.models_created} modelos, +${result.years_created} años, +${result.engines_created ?? 0} motores. ${result.note}`,
       )
     } catch (err) {
       setError(err.message)
@@ -512,13 +512,12 @@ export default function App() {
           <div>
             <h2>Árbol de vehículos (UE)</h2>
             <p className="muted">
-              Importa marca → modelo → años (~{treePreview?.brands ?? '…'} marcas, ~
-              {treePreview?.models ?? '…'} modelos). No incluye motores ni piezas: eso es el
-              contenido de taller y se completa aparte (no hay fuente gratis con “todo”).
+              Importa marca → modelo → años y motores típicos (~{treePreview?.brands ?? '…'}{' '}
+              marcas). La ficha/piezas de taller se completan aparte.
             </p>
           </div>
           <button type="button" onClick={handleImportVehicleTree} disabled={importingTree}>
-            {importingTree ? 'Importando…' : 'Importar árbol completo'}
+            {importingTree ? 'Importando…' : 'Importar / actualizar árboles y motores'}
           </button>
         </div>
       </section>

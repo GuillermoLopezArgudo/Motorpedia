@@ -207,4 +207,5 @@ class VehicleTreeImportOut(BaseModel):
     brands_created: int
     models_created: int
     years_created: int
+    engines_created: int = 0
     note: str

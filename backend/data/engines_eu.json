@@ -1,0 +1,1493 @@
+[
+  {
+    "brand": "Seat",
+    "model": "Ibiza",
+    "engines": [
+      {
+        "name": "1.5",
+        "fuel": "Gasolina",
+        "power_hp": 75,
+        "displacement_cc": 1498,
+        "engine_code": null,
+        "year_from": 1993,
+        "year_to": 1999
+      },
+      {
+        "name": "1.4",
+        "fuel": "Gasolina",
+        "power_hp": 60,
+        "displacement_cc": 1390,
+        "engine_code": null,
+        "year_from": 1999,
+        "year_to": 2002
+      },
+      {
+        "name": "1.9 TDI",
+        "fuel": "Diésel",
+        "power_hp": 90,
+        "displacement_cc": 1896,
+        "engine_code": "AGR",
+        "year_from": 1999,
+        "year_to": 2002
+      },
+      {
+        "name": "1.9 TDI",
+        "fuel": "Diésel",
+        "power_hp": 100,
+        "displacement_cc": 1896,
+        "engine_code": "ATD",
+        "year_from": 2002,
+        "year_to": 2008
+      },
+      {
+        "name": "1.4 TDI",
+        "fuel": "Diésel",
+        "power_hp": 75,
+        "displacement_cc": 1422,
+        "engine_code": null,
+        "year_from": 2002,
+        "year_to": 2008
+      },
+      {
+        "name": "1.2",
+        "fuel": "Gasolina",
+        "power_hp": 70,
+        "displacement_cc": 1198,
+        "engine_code": null,
+        "year_from": 2002,
+        "year_to": 2008
+      },
+      {
+        "name": "1.2 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 105,
+        "displacement_cc": 1197,
+        "engine_code": null,
+        "year_from": 2008,
+        "year_to": 2017
+      },
+      {
+        "name": "1.6 TDI",
+        "fuel": "Diésel",
+        "power_hp": 105,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2009,
+        "year_to": 2017
+      },
+      {
+        "name": "1.0 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 110,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2024
+      },
+      {
+        "name": "1.5 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1498,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2024
+      },
+      {
+        "name": "1.6 TDI",
+        "fuel": "Diésel",
+        "power_hp": 95,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2021
+      }
+    ]
+  },
+  {
+    "brand": "Seat",
+    "model": "León",
+    "engines": [
+      {
+        "name": "1.9 TDI",
+        "fuel": "Diésel",
+        "power_hp": 110,
+        "displacement_cc": 1896,
+        "engine_code": null,
+        "year_from": 1999,
+        "year_to": 2005
+      },
+      {
+        "name": "1.6",
+        "fuel": "Gasolina",
+        "power_hp": 105,
+        "displacement_cc": 1595,
+        "engine_code": null,
+        "year_from": 1999,
+        "year_to": 2005
+      },
+      {
+        "name": "1.9 TDI",
+        "fuel": "Diésel",
+        "power_hp": 105,
+        "displacement_cc": 1896,
+        "engine_code": null,
+        "year_from": 2005,
+        "year_to": 2012
+      },
+      {
+        "name": "1.4 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 125,
+        "displacement_cc": 1390,
+        "engine_code": null,
+        "year_from": 2007,
+        "year_to": 2012
+      },
+      {
+        "name": "1.6 TDI",
+        "fuel": "Diésel",
+        "power_hp": 105,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2010,
+        "year_to": 2016
+      },
+      {
+        "name": "1.4 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 125,
+        "displacement_cc": 1395,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2020
+      },
+      {
+        "name": "1.5 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1498,
+        "engine_code": "DADA",
+        "year_from": 2018,
+        "year_to": 2024
+      },
+      {
+        "name": "2.0 TDI",
+        "fuel": "Diésel",
+        "power_hp": 150,
+        "displacement_cc": 1968,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Seat",
+    "model": "Ateca",
+    "engines": [
+      {
+        "name": "1.0 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 115,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2016,
+        "year_to": 2024
+      },
+      {
+        "name": "1.5 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1498,
+        "engine_code": null,
+        "year_from": 2016,
+        "year_to": 2024
+      },
+      {
+        "name": "2.0 TDI",
+        "fuel": "Diésel",
+        "power_hp": 150,
+        "displacement_cc": 1968,
+        "engine_code": null,
+        "year_from": 2016,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Seat",
+    "model": "Arona",
+    "engines": [
+      {
+        "name": "1.0 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 95,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2024
+      },
+      {
+        "name": "1.0 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 110,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2024
+      },
+      {
+        "name": "1.6 TDI",
+        "fuel": "Diésel",
+        "power_hp": 95,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2021
+      }
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "engines": [
+      {
+        "name": "1.4",
+        "fuel": "Gasolina",
+        "power_hp": 75,
+        "displacement_cc": 1390,
+        "engine_code": null,
+        "year_from": 1997,
+        "year_to": 2003
+      },
+      {
+        "name": "1.9 TDI",
+        "fuel": "Diésel",
+        "power_hp": 90,
+        "displacement_cc": 1896,
+        "engine_code": null,
+        "year_from": 1997,
+        "year_to": 2003
+      },
+      {
+        "name": "1.9 TDI",
+        "fuel": "Diésel",
+        "power_hp": 105,
+        "displacement_cc": 1896,
+        "engine_code": null,
+        "year_from": 2003,
+        "year_to": 2008
+      },
+      {
+        "name": "1.4 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 122,
+        "displacement_cc": 1390,
+        "engine_code": null,
+        "year_from": 2007,
+        "year_to": 2012
+      },
+      {
+        "name": "2.0 TDI",
+        "fuel": "Diésel",
+        "power_hp": 140,
+        "displacement_cc": 1968,
+        "engine_code": null,
+        "year_from": 2008,
+        "year_to": 2012
+      },
+      {
+        "name": "1.4 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 125,
+        "displacement_cc": 1395,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2019
+      },
+      {
+        "name": "2.0 TDI",
+        "fuel": "Diésel",
+        "power_hp": 150,
+        "displacement_cc": 1968,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2024
+      },
+      {
+        "name": "1.5 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1498,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2024
+      },
+      {
+        "name": "e-Golf",
+        "fuel": "Eléctrico",
+        "power_hp": 136,
+        "displacement_cc": null,
+        "engine_code": null,
+        "year_from": 2014,
+        "year_to": 2020
+      }
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Polo",
+    "engines": [
+      {
+        "name": "1.0",
+        "fuel": "Gasolina",
+        "power_hp": 60,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2001,
+        "year_to": 2009
+      },
+      {
+        "name": "1.4 TDI",
+        "fuel": "Diésel",
+        "power_hp": 75,
+        "displacement_cc": 1422,
+        "engine_code": null,
+        "year_from": 2001,
+        "year_to": 2009
+      },
+      {
+        "name": "1.2 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 90,
+        "displacement_cc": 1197,
+        "engine_code": null,
+        "year_from": 2009,
+        "year_to": 2017
+      },
+      {
+        "name": "1.6 TDI",
+        "fuel": "Diésel",
+        "power_hp": 90,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2009,
+        "year_to": 2017
+      },
+      {
+        "name": "1.0 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 95,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Passat",
+    "engines": [
+      {
+        "name": "1.9 TDI",
+        "fuel": "Diésel",
+        "power_hp": 130,
+        "displacement_cc": 1896,
+        "engine_code": null,
+        "year_from": 2000,
+        "year_to": 2005
+      },
+      {
+        "name": "2.0 TDI",
+        "fuel": "Diésel",
+        "power_hp": 140,
+        "displacement_cc": 1968,
+        "engine_code": null,
+        "year_from": 2005,
+        "year_to": 2014
+      },
+      {
+        "name": "1.4 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1390,
+        "engine_code": null,
+        "year_from": 2010,
+        "year_to": 2014
+      },
+      {
+        "name": "2.0 TDI",
+        "fuel": "Diésel",
+        "power_hp": 150,
+        "displacement_cc": 1968,
+        "engine_code": null,
+        "year_from": 2014,
+        "year_to": 2024
+      },
+      {
+        "name": "1.5 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1498,
+        "engine_code": null,
+        "year_from": 2018,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Tiguan",
+    "engines": [
+      {
+        "name": "1.4 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1390,
+        "engine_code": null,
+        "year_from": 2007,
+        "year_to": 2015
+      },
+      {
+        "name": "2.0 TDI",
+        "fuel": "Diésel",
+        "power_hp": 140,
+        "displacement_cc": 1968,
+        "engine_code": null,
+        "year_from": 2007,
+        "year_to": 2015
+      },
+      {
+        "name": "1.5 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1498,
+        "engine_code": null,
+        "year_from": 2016,
+        "year_to": 2024
+      },
+      {
+        "name": "2.0 TDI",
+        "fuel": "Diésel",
+        "power_hp": 150,
+        "displacement_cc": 1968,
+        "engine_code": null,
+        "year_from": 2016,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Audi",
+    "model": "A3",
+    "engines": [
+      {
+        "name": "1.6",
+        "fuel": "Gasolina",
+        "power_hp": 102,
+        "displacement_cc": 1595,
+        "engine_code": null,
+        "year_from": 1996,
+        "year_to": 2003
+      },
+      {
+        "name": "1.9 TDI",
+        "fuel": "Diésel",
+        "power_hp": 110,
+        "displacement_cc": 1896,
+        "engine_code": null,
+        "year_from": 1996,
+        "year_to": 2003
+      },
+      {
+        "name": "1.9 TDI",
+        "fuel": "Diésel",
+        "power_hp": 105,
+        "displacement_cc": 1896,
+        "engine_code": null,
+        "year_from": 2003,
+        "year_to": 2012
+      },
+      {
+        "name": "1.4 TFSI",
+        "fuel": "Gasolina",
+        "power_hp": 125,
+        "displacement_cc": 1390,
+        "engine_code": null,
+        "year_from": 2007,
+        "year_to": 2012
+      },
+      {
+        "name": "1.6 TDI",
+        "fuel": "Diésel",
+        "power_hp": 105,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2009,
+        "year_to": 2016
+      },
+      {
+        "name": "1.5 TFSI",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1498,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2024
+      },
+      {
+        "name": "2.0 TDI",
+        "fuel": "Diésel",
+        "power_hp": 150,
+        "displacement_cc": 1968,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Audi",
+    "model": "A4",
+    "engines": [
+      {
+        "name": "1.8 T",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1781,
+        "engine_code": null,
+        "year_from": 1994,
+        "year_to": 2001
+      },
+      {
+        "name": "1.9 TDI",
+        "fuel": "Diésel",
+        "power_hp": 110,
+        "displacement_cc": 1896,
+        "engine_code": null,
+        "year_from": 1995,
+        "year_to": 2001
+      },
+      {
+        "name": "2.0 TDI",
+        "fuel": "Diésel",
+        "power_hp": 140,
+        "displacement_cc": 1968,
+        "engine_code": null,
+        "year_from": 2004,
+        "year_to": 2015
+      },
+      {
+        "name": "1.8 TFSI",
+        "fuel": "Gasolina",
+        "power_hp": 170,
+        "displacement_cc": 1798,
+        "engine_code": null,
+        "year_from": 2007,
+        "year_to": 2015
+      },
+      {
+        "name": "2.0 TDI",
+        "fuel": "Diésel",
+        "power_hp": 150,
+        "displacement_cc": 1968,
+        "engine_code": null,
+        "year_from": 2015,
+        "year_to": 2024
+      },
+      {
+        "name": "2.0 TFSI",
+        "fuel": "Gasolina",
+        "power_hp": 190,
+        "displacement_cc": 1984,
+        "engine_code": null,
+        "year_from": 2015,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "BMW",
+    "model": "Serie 3",
+    "engines": [
+      {
+        "name": "318i",
+        "fuel": "Gasolina",
+        "power_hp": 143,
+        "displacement_cc": 1995,
+        "engine_code": null,
+        "year_from": 1998,
+        "year_to": 2005
+      },
+      {
+        "name": "320d",
+        "fuel": "Diésel",
+        "power_hp": 150,
+        "displacement_cc": 1995,
+        "engine_code": null,
+        "year_from": 2001,
+        "year_to": 2005
+      },
+      {
+        "name": "320d",
+        "fuel": "Diésel",
+        "power_hp": 177,
+        "displacement_cc": 1995,
+        "engine_code": null,
+        "year_from": 2005,
+        "year_to": 2011
+      },
+      {
+        "name": "320d",
+        "fuel": "Diésel",
+        "power_hp": 184,
+        "displacement_cc": 1995,
+        "engine_code": null,
+        "year_from": 2011,
+        "year_to": 2018
+      },
+      {
+        "name": "320i",
+        "fuel": "Gasolina",
+        "power_hp": 184,
+        "displacement_cc": 1998,
+        "engine_code": null,
+        "year_from": 2011,
+        "year_to": 2018
+      },
+      {
+        "name": "320d",
+        "fuel": "Diésel",
+        "power_hp": 190,
+        "displacement_cc": 1995,
+        "engine_code": null,
+        "year_from": 2018,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Renault",
+    "model": "Clio",
+    "engines": [
+      {
+        "name": "1.2",
+        "fuel": "Gasolina",
+        "power_hp": 75,
+        "displacement_cc": 1149,
+        "engine_code": null,
+        "year_from": 1998,
+        "year_to": 2005
+      },
+      {
+        "name": "1.5 dCi",
+        "fuel": "Diésel",
+        "power_hp": 65,
+        "displacement_cc": 1461,
+        "engine_code": null,
+        "year_from": 2001,
+        "year_to": 2005
+      },
+      {
+        "name": "1.2",
+        "fuel": "Gasolina",
+        "power_hp": 75,
+        "displacement_cc": 1149,
+        "engine_code": null,
+        "year_from": 2005,
+        "year_to": 2012
+      },
+      {
+        "name": "1.5 dCi",
+        "fuel": "Diésel",
+        "power_hp": 85,
+        "displacement_cc": 1461,
+        "engine_code": null,
+        "year_from": 2005,
+        "year_to": 2012
+      },
+      {
+        "name": "0.9 TCe",
+        "fuel": "Gasolina",
+        "power_hp": 90,
+        "displacement_cc": 898,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2019
+      },
+      {
+        "name": "1.5 dCi",
+        "fuel": "Diésel",
+        "power_hp": 90,
+        "displacement_cc": 1461,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2019
+      },
+      {
+        "name": "1.0 TCe",
+        "fuel": "Gasolina",
+        "power_hp": 90,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2019,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Ford",
+    "model": "Focus",
+    "engines": [
+      {
+        "name": "1.6",
+        "fuel": "Gasolina",
+        "power_hp": 100,
+        "displacement_cc": 1596,
+        "engine_code": null,
+        "year_from": 1998,
+        "year_to": 2004
+      },
+      {
+        "name": "1.8 TDCi",
+        "fuel": "Diésel",
+        "power_hp": 115,
+        "displacement_cc": 1753,
+        "engine_code": null,
+        "year_from": 2001,
+        "year_to": 2004
+      },
+      {
+        "name": "1.6 TDCi",
+        "fuel": "Diésel",
+        "power_hp": 109,
+        "displacement_cc": 1560,
+        "engine_code": null,
+        "year_from": 2004,
+        "year_to": 2010
+      },
+      {
+        "name": "1.6 Ti-VCT",
+        "fuel": "Gasolina",
+        "power_hp": 115,
+        "displacement_cc": 1596,
+        "engine_code": null,
+        "year_from": 2004,
+        "year_to": 2010
+      },
+      {
+        "name": "1.0 EcoBoost",
+        "fuel": "Gasolina",
+        "power_hp": 125,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2011,
+        "year_to": 2018
+      },
+      {
+        "name": "1.5 TDCi",
+        "fuel": "Diésel",
+        "power_hp": 120,
+        "displacement_cc": 1499,
+        "engine_code": null,
+        "year_from": 2014,
+        "year_to": 2018
+      },
+      {
+        "name": "1.0 EcoBoost",
+        "fuel": "Gasolina",
+        "power_hp": 125,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2018,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Toyota",
+    "model": "Corolla",
+    "engines": [
+      {
+        "name": "1.4 D-4D",
+        "fuel": "Diésel",
+        "power_hp": 90,
+        "displacement_cc": 1364,
+        "engine_code": null,
+        "year_from": 2000,
+        "year_to": 2006
+      },
+      {
+        "name": "1.6 VVT-i",
+        "fuel": "Gasolina",
+        "power_hp": 110,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2000,
+        "year_to": 2006
+      },
+      {
+        "name": "1.4 D-4D",
+        "fuel": "Diésel",
+        "power_hp": 90,
+        "displacement_cc": 1364,
+        "engine_code": null,
+        "year_from": 2006,
+        "year_to": 2013
+      },
+      {
+        "name": "1.6 Valvematic",
+        "fuel": "Gasolina",
+        "power_hp": 132,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2006,
+        "year_to": 2013
+      },
+      {
+        "name": "1.8 Hybrid",
+        "fuel": "Híbrido",
+        "power_hp": 122,
+        "displacement_cc": 1798,
+        "engine_code": null,
+        "year_from": 2018,
+        "year_to": 2024
+      },
+      {
+        "name": "2.0 Hybrid",
+        "fuel": "Híbrido",
+        "power_hp": 184,
+        "displacement_cc": 1987,
+        "engine_code": null,
+        "year_from": 2019,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Peugeot",
+    "model": "308",
+    "engines": [
+      {
+        "name": "1.6 HDi",
+        "fuel": "Diésel",
+        "power_hp": 90,
+        "displacement_cc": 1560,
+        "engine_code": null,
+        "year_from": 2007,
+        "year_to": 2013
+      },
+      {
+        "name": "1.6 VTi",
+        "fuel": "Gasolina",
+        "power_hp": 120,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2007,
+        "year_to": 2013
+      },
+      {
+        "name": "1.6 BlueHDi",
+        "fuel": "Diésel",
+        "power_hp": 120,
+        "displacement_cc": 1560,
+        "engine_code": null,
+        "year_from": 2013,
+        "year_to": 2021
+      },
+      {
+        "name": "1.2 PureTech",
+        "fuel": "Gasolina",
+        "power_hp": 130,
+        "displacement_cc": 1199,
+        "engine_code": null,
+        "year_from": 2013,
+        "year_to": 2021
+      },
+      {
+        "name": "1.5 BlueHDi",
+        "fuel": "Diésel",
+        "power_hp": 130,
+        "displacement_cc": 1499,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2024
+      },
+      {
+        "name": "1.2 PureTech",
+        "fuel": "Gasolina",
+        "power_hp": 130,
+        "displacement_cc": 1199,
+        "engine_code": null,
+        "year_from": 2021,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Opel",
+    "model": "Corsa",
+    "engines": [
+      {
+        "name": "1.2",
+        "fuel": "Gasolina",
+        "power_hp": 75,
+        "displacement_cc": 1199,
+        "engine_code": null,
+        "year_from": 2000,
+        "year_to": 2006
+      },
+      {
+        "name": "1.3 CDTI",
+        "fuel": "Diésel",
+        "power_hp": 70,
+        "displacement_cc": 1248,
+        "engine_code": null,
+        "year_from": 2003,
+        "year_to": 2006
+      },
+      {
+        "name": "1.2",
+        "fuel": "Gasolina",
+        "power_hp": 80,
+        "displacement_cc": 1229,
+        "engine_code": null,
+        "year_from": 2006,
+        "year_to": 2014
+      },
+      {
+        "name": "1.3 CDTI",
+        "fuel": "Diésel",
+        "power_hp": 75,
+        "displacement_cc": 1248,
+        "engine_code": null,
+        "year_from": 2006,
+        "year_to": 2014
+      },
+      {
+        "name": "1.4",
+        "fuel": "Gasolina",
+        "power_hp": 90,
+        "displacement_cc": 1398,
+        "engine_code": null,
+        "year_from": 2014,
+        "year_to": 2019
+      },
+      {
+        "name": "1.2 Turbo",
+        "fuel": "Gasolina",
+        "power_hp": 100,
+        "displacement_cc": 1199,
+        "engine_code": null,
+        "year_from": 2019,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Skoda",
+    "model": "Octavia",
+    "engines": [
+      {
+        "name": "1.9 TDI",
+        "fuel": "Diésel",
+        "power_hp": 90,
+        "displacement_cc": 1896,
+        "engine_code": null,
+        "year_from": 1996,
+        "year_to": 2004
+      },
+      {
+        "name": "1.9 TDI",
+        "fuel": "Diésel",
+        "power_hp": 105,
+        "displacement_cc": 1896,
+        "engine_code": null,
+        "year_from": 2004,
+        "year_to": 2012
+      },
+      {
+        "name": "1.6 TDI",
+        "fuel": "Diésel",
+        "power_hp": 105,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2009,
+        "year_to": 2012
+      },
+      {
+        "name": "1.4 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 140,
+        "displacement_cc": 1390,
+        "engine_code": null,
+        "year_from": 2008,
+        "year_to": 2012
+      },
+      {
+        "name": "1.5 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1498,
+        "engine_code": null,
+        "year_from": 2017,
+        "year_to": 2024
+      },
+      {
+        "name": "2.0 TDI",
+        "fuel": "Diésel",
+        "power_hp": 150,
+        "displacement_cc": 1968,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Cupra",
+    "model": "Formentor",
+    "engines": [
+      {
+        "name": "1.5 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1498,
+        "engine_code": null,
+        "year_from": 2020,
+        "year_to": 2024
+      },
+      {
+        "name": "2.0 TSI",
+        "fuel": "Gasolina",
+        "power_hp": 190,
+        "displacement_cc": 1984,
+        "engine_code": null,
+        "year_from": 2020,
+        "year_to": 2024
+      },
+      {
+        "name": "2.0 TDI",
+        "fuel": "Diésel",
+        "power_hp": 150,
+        "displacement_cc": 1968,
+        "engine_code": null,
+        "year_from": 2020,
+        "year_to": 2024
+      },
+      {
+        "name": "VZ",
+        "fuel": "Gasolina",
+        "power_hp": 310,
+        "displacement_cc": 1984,
+        "engine_code": null,
+        "year_from": 2020,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Dacia",
+    "model": "Sandero",
+    "engines": [
+      {
+        "name": "1.2",
+        "fuel": "Gasolina",
+        "power_hp": 75,
+        "displacement_cc": 1149,
+        "engine_code": null,
+        "year_from": 2008,
+        "year_to": 2012
+      },
+      {
+        "name": "1.5 dCi",
+        "fuel": "Diésel",
+        "power_hp": 75,
+        "displacement_cc": 1461,
+        "engine_code": null,
+        "year_from": 2008,
+        "year_to": 2012
+      },
+      {
+        "name": "0.9 TCe",
+        "fuel": "Gasolina",
+        "power_hp": 90,
+        "displacement_cc": 898,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2020
+      },
+      {
+        "name": "1.5 dCi",
+        "fuel": "Diésel",
+        "power_hp": 90,
+        "displacement_cc": 1461,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2020
+      },
+      {
+        "name": "1.0 TCe",
+        "fuel": "Gasolina",
+        "power_hp": 90,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2020,
+        "year_to": 2024
+      },
+      {
+        "name": "1.0 ECO-G",
+        "fuel": "GLP",
+        "power_hp": 100,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2020,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Hyundai",
+    "model": "Tucson",
+    "engines": [
+      {
+        "name": "2.0 CRDi",
+        "fuel": "Diésel",
+        "power_hp": 136,
+        "displacement_cc": 1991,
+        "engine_code": null,
+        "year_from": 2004,
+        "year_to": 2009
+      },
+      {
+        "name": "2.0 CRDi",
+        "fuel": "Diésel",
+        "power_hp": 136,
+        "displacement_cc": 1991,
+        "engine_code": null,
+        "year_from": 2009,
+        "year_to": 2015
+      },
+      {
+        "name": "1.7 CRDi",
+        "fuel": "Diésel",
+        "power_hp": 141,
+        "displacement_cc": 1685,
+        "engine_code": null,
+        "year_from": 2015,
+        "year_to": 2020
+      },
+      {
+        "name": "1.6 T-GDI",
+        "fuel": "Gasolina",
+        "power_hp": 177,
+        "displacement_cc": 1591,
+        "engine_code": null,
+        "year_from": 2015,
+        "year_to": 2020
+      },
+      {
+        "name": "1.6 T-GDI Hybrid",
+        "fuel": "Híbrido",
+        "power_hp": 230,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2020,
+        "year_to": 2024
+      },
+      {
+        "name": "1.6 CRDi",
+        "fuel": "Diésel",
+        "power_hp": 136,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2020,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Kia",
+    "model": "Sportage",
+    "engines": [
+      {
+        "name": "2.0 CRDi",
+        "fuel": "Diésel",
+        "power_hp": 140,
+        "displacement_cc": 1991,
+        "engine_code": null,
+        "year_from": 2004,
+        "year_to": 2010
+      },
+      {
+        "name": "1.7 CRDi",
+        "fuel": "Diésel",
+        "power_hp": 115,
+        "displacement_cc": 1685,
+        "engine_code": null,
+        "year_from": 2010,
+        "year_to": 2015
+      },
+      {
+        "name": "1.6 GDI",
+        "fuel": "Gasolina",
+        "power_hp": 135,
+        "displacement_cc": 1591,
+        "engine_code": null,
+        "year_from": 2010,
+        "year_to": 2015
+      },
+      {
+        "name": "1.6 CRDi",
+        "fuel": "Diésel",
+        "power_hp": 136,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2015,
+        "year_to": 2021
+      },
+      {
+        "name": "1.6 T-GDI Hybrid",
+        "fuel": "Híbrido",
+        "power_hp": 230,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2021,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Nissan",
+    "model": "Qashqai",
+    "engines": [
+      {
+        "name": "1.5 dCi",
+        "fuel": "Diésel",
+        "power_hp": 106,
+        "displacement_cc": 1461,
+        "engine_code": null,
+        "year_from": 2006,
+        "year_to": 2013
+      },
+      {
+        "name": "1.6",
+        "fuel": "Gasolina",
+        "power_hp": 114,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2006,
+        "year_to": 2013
+      },
+      {
+        "name": "1.5 dCi",
+        "fuel": "Diésel",
+        "power_hp": 110,
+        "displacement_cc": 1461,
+        "engine_code": null,
+        "year_from": 2013,
+        "year_to": 2021
+      },
+      {
+        "name": "1.2 DIG-T",
+        "fuel": "Gasolina",
+        "power_hp": 115,
+        "displacement_cc": 1197,
+        "engine_code": null,
+        "year_from": 2013,
+        "year_to": 2018
+      },
+      {
+        "name": "1.3 DIG-T",
+        "fuel": "Gasolina",
+        "power_hp": 140,
+        "displacement_cc": 1332,
+        "engine_code": null,
+        "year_from": 2018,
+        "year_to": 2024
+      },
+      {
+        "name": "e-Power",
+        "fuel": "Híbrido",
+        "power_hp": 158,
+        "displacement_cc": 1497,
+        "engine_code": null,
+        "year_from": 2022,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Mercedes-Benz",
+    "model": "Clase A",
+    "engines": [
+      {
+        "name": "A 160 CDI",
+        "fuel": "Diésel",
+        "power_hp": 82,
+        "displacement_cc": 1689,
+        "engine_code": null,
+        "year_from": 1997,
+        "year_to": 2004
+      },
+      {
+        "name": "A 180 CDI",
+        "fuel": "Diésel",
+        "power_hp": 109,
+        "displacement_cc": 1991,
+        "engine_code": null,
+        "year_from": 2004,
+        "year_to": 2012
+      },
+      {
+        "name": "A 180 CDI",
+        "fuel": "Diésel",
+        "power_hp": 109,
+        "displacement_cc": 1461,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2018
+      },
+      {
+        "name": "A 180",
+        "fuel": "Gasolina",
+        "power_hp": 122,
+        "displacement_cc": 1595,
+        "engine_code": null,
+        "year_from": 2012,
+        "year_to": 2018
+      },
+      {
+        "name": "A 180",
+        "fuel": "Gasolina",
+        "power_hp": 136,
+        "displacement_cc": 1332,
+        "engine_code": null,
+        "year_from": 2018,
+        "year_to": 2024
+      },
+      {
+        "name": "A 200 d",
+        "fuel": "Diésel",
+        "power_hp": 150,
+        "displacement_cc": 1950,
+        "engine_code": null,
+        "year_from": 2018,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Fiat",
+    "model": "500",
+    "engines": [
+      {
+        "name": "1.2",
+        "fuel": "Gasolina",
+        "power_hp": 69,
+        "displacement_cc": 1242,
+        "engine_code": null,
+        "year_from": 2007,
+        "year_to": 2015
+      },
+      {
+        "name": "1.3 Multijet",
+        "fuel": "Diésel",
+        "power_hp": 75,
+        "displacement_cc": 1248,
+        "engine_code": null,
+        "year_from": 2007,
+        "year_to": 2015
+      },
+      {
+        "name": "0.9 TwinAir",
+        "fuel": "Gasolina",
+        "power_hp": 85,
+        "displacement_cc": 875,
+        "engine_code": null,
+        "year_from": 2010,
+        "year_to": 2015
+      },
+      {
+        "name": "1.2",
+        "fuel": "Gasolina",
+        "power_hp": 69,
+        "displacement_cc": 1242,
+        "engine_code": null,
+        "year_from": 2015,
+        "year_to": 2020
+      },
+      {
+        "name": "Hybrid 1.0",
+        "fuel": "Híbrido",
+        "power_hp": 70,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2020,
+        "year_to": 2024
+      }
+    ]
+  },
+  {
+    "brand": "Citroën",
+    "model": "C3",
+    "engines": [
+      {
+        "name": "1.4 HDi",
+        "fuel": "Diésel",
+        "power_hp": 70,
+        "displacement_cc": 1398,
+        "engine_code": null,
+        "year_from": 2002,
+        "year_to": 2009
+      },
+      {
+        "name": "1.4",
+        "fuel": "Gasolina",
+        "power_hp": 75,
+        "displacement_cc": 1360,
+        "engine_code": null,
+        "year_from": 2002,
+        "year_to": 2009
+      },
+      {
+        "name": "1.4 HDi",
+        "fuel": "Diésel",
+        "power_hp": 70,
+        "displacement_cc": 1398,
+        "engine_code": null,
+        "year_from": 2009,
+        "year_to": 2016
+      },
+      {
+        "name": "1.2 PureTech",
+        "fuel": "Gasolina",
+        "power_hp": 82,
+        "displacement_cc": 1199,
+        "engine_code": null,
+        "year_from": 2013,
+        "year_to": 2016
+      },
+      {
+        "name": "1.2 PureTech",
+        "fuel": "Gasolina",
+        "power_hp": 83,
+        "displacement_cc": 1199,
+        "engine_code": null,
+        "year_from": 2016,
+        "year_to": 2024
+      },
+      {
+        "name": "1.5 BlueHDi",
+        "fuel": "Diésel",
+        "power_hp": 100,
+        "displacement_cc": 1499,
+        "engine_code": null,
+        "year_from": 2018,
+        "year_to": 2024
+      }
+    ]
+  }
+]
