@@ -1489,5 +1489,110 @@
         "year_to": 2024
       }
     ]
+  },
+  {
+    "brand": "Audi",
+    "model": "A1",
+    "engines": [
+      {
+        "name": "1.2 TFSI",
+        "fuel": "Gasolina",
+        "power_hp": 86,
+        "displacement_cc": 1197,
+        "engine_code": null,
+        "year_from": 2010,
+        "year_to": 2014
+      },
+      {
+        "name": "1.4 TFSI",
+        "fuel": "Gasolina",
+        "power_hp": 122,
+        "displacement_cc": 1390,
+        "engine_code": null,
+        "year_from": 2010,
+        "year_to": 2014
+      },
+      {
+        "name": "1.6 TDI",
+        "fuel": "Diésel",
+        "power_hp": 90,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2010,
+        "year_to": 2014
+      },
+      {
+        "name": "1.0 TFSI",
+        "fuel": "Gasolina",
+        "power_hp": 95,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2015,
+        "year_to": 2018
+      },
+      {
+        "name": "1.4 TFSI",
+        "fuel": "Gasolina",
+        "power_hp": 125,
+        "displacement_cc": 1395,
+        "engine_code": null,
+        "year_from": 2015,
+        "year_to": 2018
+      },
+      {
+        "name": "1.6 TDI",
+        "fuel": "Diésel",
+        "power_hp": 116,
+        "displacement_cc": 1598,
+        "engine_code": null,
+        "year_from": 2015,
+        "year_to": 2018
+      },
+      {
+        "name": "1.0 TFSI",
+        "fuel": "Gasolina",
+        "power_hp": 110,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2019,
+        "year_to": 2024
+      },
+      {
+        "name": "1.5 TFSI",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1498,
+        "engine_code": null,
+        "year_from": 2019,
+        "year_to": 2024
+      },
+      {
+        "name": "25 TFSI",
+        "fuel": "Gasolina",
+        "power_hp": 95,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2019,
+        "year_to": 2024
+      },
+      {
+        "name": "30 TFSI",
+        "fuel": "Gasolina",
+        "power_hp": 116,
+        "displacement_cc": 999,
+        "engine_code": null,
+        "year_from": 2019,
+        "year_to": 2024
+      },
+      {
+        "name": "35 TFSI",
+        "fuel": "Gasolina",
+        "power_hp": 150,
+        "displacement_cc": 1498,
+        "engine_code": null,
+        "year_from": 2019,
+        "year_to": 2024
+      }
+    ]
   }
 ]

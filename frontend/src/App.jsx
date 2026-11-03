@@ -196,8 +196,9 @@ export default function App() {
     if (!modelId) return 'Selecciona un modelo.'
     if (!years.length) return 'Este modelo aún no tiene años. Añade uno.'
     if (!yearId) return 'Selecciona un año.'
-    if (!engines.length) return 'Este año aún no tiene motores. Añade uno para crear su ficha.'
-    if (!engineId) return 'Selecciona un motor para ver o editar la ficha técnica.'
+    if (!engines.length)
+      return 'Este año aún no tiene motores en el catálogo. Usa «Añadir motor» o prueba otro año.'
+    if (!engineId) return 'Selecciona un motor para ver toda la información del coche.'
     return null
   }
 
